@@ -1,0 +1,11 @@
+{
+    "name" : "blowfish",
+    "image" : "images/blowfish.png",
+    "headline" : "一个强大、轻量级的 Hugo 主题。",
+    "bio" : "一个强大、轻量级的 Hugo 主题。",
+    "social" : [
+      { "x-twitter" : "https://x.com/burufugu" },
+      { "github" : "https://github.com/nunocoracao/blowfish" }
+    ]
+  }
+  

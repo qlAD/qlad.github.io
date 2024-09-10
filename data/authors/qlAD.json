@@ -1,0 +1,13 @@
+{
+  "name" : "qlAD",
+  "image" : "images/qlAD.webp",
+  "headline" : "做技术的黑客心态加上开放共进的态度是成长和越过高山幽谷的秘籍！",
+  "bio" : "做技术的黑客心态加上开放共进的态度是成长和越过高山幽谷的秘籍！",
+  "social" : [
+    { "email" : "mailto:qlad.adgk.1024@gmail.com" },
+    { "mastodon" : "https://mastodon.social/@qlAD" },
+    { "github" : "https://github.com/qlad" },
+    { "telegram" : "https://t.me/qlAD_404" },
+    { "x-twitter" : "https://x.com/qlAD_404" }
+  ]
+}

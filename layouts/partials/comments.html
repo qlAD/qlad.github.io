@@ -1,0 +1,48 @@
+<div class="comment-on flex flex-col md:flex-row items-start md:items-center mt-8 text-base capitalize print:hidden">
+    <div id="load-giscus" class="inline-flex items-center relative">
+        <span class="ml-2 mr-1 cursor-pointer">{{ partial "icon.html" "giscus" }}</span>
+        <span class='mr-2 opacity-75 hover:opacity-100 cursor-pointer duration-300 ease-in-out'>Giscus</span>
+        <span class="cursor-pointer">点击加载评论</span>
+    </div>
+</div>
+<div id="comments" class=""></div>
+<script>
+    function loadGiscus() {
+        return new Promise((resolve) => {
+            const script = document.createElement('script');
+            script.src = 'https://giscus.app/client.js';
+            script.setAttribute('data-repo', 'qlAD/qlad.github.io');
+            script.setAttribute('data-repo-id', 'R_kgDOMvW0PA');
+            script.setAttribute('data-category', 'Giscus');
+            script.setAttribute('data-category-id', 'DIC_kwDOMvW0PM4CiVt3');
+            script.setAttribute('data-mapping', 'pathname');
+            script.setAttribute('data-strict', '1');
+            script.setAttribute('data-reactions-enabled', '1');
+            script.setAttribute('data-emit-metadata', '0');
+            script.setAttribute('data-input-position', 'bottom');
+            script.setAttribute('data-lang', 'zh-CN');
+            script.setAttribute('data-loading', 'lazy');
+            script.setAttribute('crossorigin', 'anonymous');
+            script.async = true;
+
+            const htmlElement = document.documentElement;
+            if (htmlElement.classList.contains('dark')) {
+                script.setAttribute('data-theme', 'dark_dimmed');
+            } else {
+                script.setAttribute('data-theme', 'light');
+            }
+
+            script.addEventListener('load', () => {
+                resolve();
+            });
+
+            document.getElementById('comments').appendChild(script);
+        });
+    }
+
+    document.getElementById('load-giscus').addEventListener('click', async () => {
+        await loadGiscus();
+        document.getElementById('load-giscus').classList.add('hidden');
+        document.getElementById('load-giscus-desc').classList.add('!hidden');
+    });
+</script>
