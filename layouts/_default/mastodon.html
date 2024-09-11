@@ -208,14 +208,14 @@
           const href = link.getAttribute('href');
 
           // 检查域名是否为 e5n.cc 或 eallion.com
-          const excludedDomains = ['e5n.cc', 'eallion.com'];
+          const excludedDomains = ['mastodon.social', 'qladgk.blog'];
           const domain = new URL(href).hostname;
           if (excludedDomains.includes(domain)) {
               return; // 跳过此链接
           }
 
           const encodedHref = btoa(encodeURIComponent(href));
-          const newHref = 'https://www.eallion.com/go/?target=' + encodedHref;
+          const newHref = 'https://www.qladgk.blog/go/?target=' + encodedHref;
           link.setAttribute('href', newHref);
       });
   });
