@@ -1,4 +1,4 @@
-name: Sync mastodon status
+name: Sync Mastodon Status
 
 on:
   #  schedule:

@@ -40,3 +40,23 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           quiet: true
           command: pages deploy public --project-name=${{ secrets.CLOUDFLARE_PROJECT_NAME }} --commit-dirty=true
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+  
+      - name: Install Python dependencies
+        run: |
+          pip3 install lxml
+  
+      - name: Submit Sitemap to Baidu
+        run: |
+          if [ -f public/zh-cn/sitemap.xml ]; then
+            cp public/zh-cn/sitemap.xml scripts;
+            cd scripts;
+            python3 baidu.py sitemap.xml "${{ secrets.BAIDU_API_URL }}";
+          else
+            echo "Error: sitemap.xml not found!";
+            exit 1;
+          fi
