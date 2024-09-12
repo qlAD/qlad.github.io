@@ -48,7 +48,7 @@ jobs:
   
       - name: Install Python dependencies
         run: |
-          pip3 install lxml
+          pip3 install lxml requests
   
       - name: Submit Sitemap to Baidu
         run: |
