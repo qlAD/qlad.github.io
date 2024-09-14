@@ -21,6 +21,7 @@ exampleSite/resources/
 
 #others
 node_modules
+pnpm-lock.yaml
 .hugo_build.lock
 
 # OS generated files

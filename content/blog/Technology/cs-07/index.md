@@ -277,11 +277,15 @@ int main() {
 
 注释的类型有单行注释和多行注释
 
+#### 1. 单行注释
+
 - 单行注释前加 //
 
 ```c
 // 单行注释
 ```
+
+#### 2. 多行注释
 
 - 多行注释用 /**/ 包裹起来
 
@@ -293,7 +297,9 @@ xxxxxx
 */
 ```
 
-注释可以嵌套，如下：
+#### 3. 嵌套注释
+
+- 注释可以嵌套，如下：
 
 ```c
 #include <stdio.h>
@@ -321,118 +327,118 @@ int main()
 
 > 输入/输出是指程序与外部世界（如用户、文件、网络等）进行交互的过程。
 
-1. 提供工具的工具箱 stdio.h
+#### 1. 工具箱 stdio.h
    
-   在 C 语言中，输入和输出（I/O）操作是程序与外部世界（如用户、文件、网络等）进行交互的基本方式。标准输入输出（Standard input and output）库 `stdio.h` 提供了多种函数来实现这些操作。
-   
-   ![image.png](https://s2.loli.net/2024/09/13/QuxZsnXdqkTRp6S.png)
+在 C 语言中，输入和输出（I/O）操作是程序与外部世界（如用户、文件、网络等）进行交互的基本方式。标准输入输出（Standard input and output）库 `stdio.h` 提供了多种函数来实现这些操作。
+
+![image.png](https://s2.loli.net/2024/09/13/QuxZsnXdqkTRp6S.png)
 
 > 这个文件在 /usr/include 目录下
 
-2. 输出工具 printf
+#### 2. 输出工具 printf
    
-   `printf` （format）函数用于格式化输出到标准输出（屏幕）。
+`printf` （format）函数用于格式化输出到标准输出（屏幕）。
+
+用法：`printf(format_string, arg1, arg2,..., argn)`
+
+- format_string：格式化字符串，包含了输出内容的格式和顺序。
+- arg1, arg2,..., argn：格式化参数，用于填充格式字符串中的占位符。
+
+例如：`printf("Hello, %s!\n", "world");`
+
+#### 3. 输入工具 scanf
    
-   用法：`printf(format_string, arg1, arg2,..., argn)`
-   
-   - format_string：格式化字符串，包含了输出内容的格式和顺序。
-   - arg1, arg2,..., argn：格式化参数，用于填充格式字符串中的占位符。
+`scanf` （format）函数用于格式化从标准输入（键盘）读取输入。
 
-   例如：`printf("Hello, %s!\n", "world");`
+用法：`scanf(format_string, arg1, arg2,..., argn)`
 
-3. 输入工具 scanf
-   
-   `scanf` （format）函数用于格式化从标准输入（键盘）读取输入。
-   
-   用法：`scanf(format_string, arg1, arg2,..., argn)`
-   
-   - format_string：格式化字符串，包含了输入内容的格式和顺序。
-   - arg1, arg2,..., argn：格式化参数，用于填充格式字符串中的占位符。
+- format_string：格式化字符串，包含了输入内容的格式和顺序。
+- arg1, arg2,..., argn：格式化参数，用于填充格式字符串中的占位符。
 
-   例如：`scanf("%d %s", &num, str);`
+例如：`scanf("%d %s", &num, str);`
 
-4. 示例：
+#### 4. 示例：
 
-   ```c
-   #include <stdio.h>
+```c
+#include <stdio.h>
 
-   int main()
-   {
-       // 定义一个整型变量 num 和一个字符数组 str，用于存储字符串，最大长度为100
-       int num;
-       char str[100];
+int main()
+{
+    // 定义一个整型变量 num 和一个字符数组 str，用于存储字符串，最大长度为100
+    int num;
+    char str[100];
 
-       printf("Enter a number: ");
-       scanf("%d", &num); // 读取一个整数
+    printf("Enter a number: ");
+    scanf("%d", &num); // 读取一个整数
 
-       printf("Enter a string: ");
-       scanf("%s", str); // 读取一个字符串
+    printf("Enter a string: ");
+    scanf("%s", str); // 读取一个字符串
 
-       printf("You entered: %d and %s\n", num, str); // 输出结果
+    printf("You entered: %d and %s\n", num, str); // 输出结果
 
-       return 0;
-   }
-   ```
+    return 0;
+}
+```
 
 ### 变量
 
 > 变量是程序中用于存储数据的内存位置。
 
-1. 变量的基本数据类型有：
+#### 1. 基本数据类型
 
-   | 数据类型 | 描述       | 示例值                |
-   | -------- | ---------- | --------------------- |
-   | `int`    | 整型变量   | `25`, `-100`, `0`     |
-   | `float`  | 浮点型变量 | `5.9`, `-3.14`, `0.0` |
-   | `char`   | 字符型变量 | `'A'`, `'b'`, `'9'`   |
+| 数据类型 | 描述       | 示例值                |
+| -------- | ---------- | --------------------- |
+| `int`    | 整型变量   | `25`, `-100`, `0`     |
+| `float`  | 浮点型变量 | `5.9`, `-3.14`, `0.0` |
+| `char`   | 字符型变量 | `'A'`, `'b'`, `'9'`   |
 
-2. 定义变量：
+#### 2. 定义变量
    
-   - 变量的声明：`数据类型` `变量名` ;
-   - 变量的初始化：`数据类型` `变量名` = `初始值`;
+- 变量的声明：`数据类型` `变量名` ;
+- 变量的初始化：`数据类型` `变量名` = `初始值`;
 
-3. 变量的命名规则：
+#### 3. 变量的命名规则
 
-   1. 变量名只能包含字母、数字和下划线。
-   2. 变量名的第一个字符不能是数字。
-   3. 变量名的长度不能超过 31 个字符。
-   4. 变量名的大小写敏感。
-   5. 变量名不能与关键字冲突。
+1. 变量名只能包含字母、数字和下划线。
+2. 变量名的第一个字符不能是数字。
+3. 变量名的大小写敏感。
+4. 变量名不能与关键字冲突。
+5. 变量名的长度不能超过 31 个字符。
 
-   例如：
+```c
+int num; // 声明一个整型变量 num
+float pi = 3.14; // 声明一个浮点型变量 pi，并初始化为 3.14
+char ch = 'a'; // 声明一个字符型变量 ch，并初始化为 'a'
+```
 
-   ```c
-   int num; // 声明一个整型变量 num
-   float pi = 3.14; // 声明一个浮点型变量 pi，并初始化为 3.14
-   char ch = 'a'; // 声明一个字符型变量 ch，并初始化为 'a'
-   ```
-   > C 中的关键字： auto break case char const continue ...
+> C 中的关键字： auto break case char const continue ...
 
-4. 示例：
-   ```c
-   #include <stdio.h>
+#### 4. 示例
 
-   int main() 
-   {
-       // 整型变量
-       int a = 10;
-       int b = 20;
-       int c = a + b;
-       printf("The sum of %d and %d is %d\n", a, b, c);
+```c
+#include <stdio.h>
 
-       // 浮点型变量
-       float d = 3.14;
-       printf("The value of pi is %f\n", d);
+int main() 
+{
+    // 整型变量
+    int a = 10;
+    int b = 20;
+    int c = a + b;
+    printf("The sum of %d and %d is %d\n", a, b, c);
 
-       // 字符型变量
-       char e = 'A';
-       printf("The ASCII value of %c is %d\n", e, e);
-    
-       return 0;
-   }
-   ```
+    // 浮点型变量
+    float d = 3.14;
+    printf("The value of pi is %f\n", d);
 
-5. 奇怪的 %：
+    // 字符型变量
+    char e = 'A';
+    printf("The ASCII value of %c is %d\n", e, e);
+
+    return 0;
+}
+```
+
+#### 5. 奇怪的 %
    
    `%d` 、`%f` 和 `%c` 这三个格式化符号，它们的意义和作用都很奇怪。
    
@@ -440,10 +446,76 @@ int main()
    - `%f`：打印浮点数。
    - `%c`：打印字符。
    
-
 ### 数据类型
 
 > 数据类型是指变量所存储的数据的类型。
+
+#### 1. 基本数据类型补充
+
+| 类型    | 存储大小    | 取值范围                                             |
+| ------- | ----------- | ---------------------------------------------------- |
+| `int`   | 2 或 4 字节 | -32,768 到 32,767 或 -2,147,483,648 到 2,147,483,647 |
+| `float` | 4 字节      | 1.2E-38 到 3.4E+38                                   |
+| `char`  | 1 字节      | -128 到 127 或 0 到 255                              |
+
+我们可以通过 sizeof() 函数来获取数据类型的存储大小。
+
+```c
+#include <stdio.h>
+#include <limits.h>
+ 
+int main()
+{
+   printf("int 存储大小 : %lu \n", sizeof(int));
+
+   return 0;
+}
+```
+
+除此之外还有：
+
+整数类型
+
+| 类型             | 存储大小    | 值范围                            |
+| ---------------- | ----------- | --------------------------------- |
+| `unsigned int`   | 2 或 4 字节 | 0 到 65,535 或 0 到 4,294,967,295 |
+| `unsigned char`  | 1 字节      | 0 到 255                          |
+| `short`          | 2 字节      | -32,768 到 32,767                 |
+| `unsigned short` | 2 字节      | 0 到 65,535                       |
+| `long`           | 4 字节      | -2,147,483,648 到 2,147,483,647   |
+| `unsigned long`  | 4 字节      | 0 到 4,294,967,295                |
+
+浮点类型
+
+| 类型     | 存储大小 | 值范围               |
+| -------- | -------- | -------------------- |
+| `double` | 8 字节   | 2.2E-308 到 1.8E+308 |
+
+```c
+#include <stdio.h>
+#include <float.h>
+ 
+int main()
+{
+   printf("float 存储最大字节数 : %lu \n", sizeof(float));
+   printf("float 最小值: %E\n", FLT_MIN );
+   printf("float 最大值: %E\n", FLT_MAX );
+   printf("精度值: %d\n", FLT_DIG );
+   
+   return 0;
+}
+```
+
+输出
+
+```sh
+float 存储最大字节数 : 4 
+float 最小值: 1.175494E-38
+float 最大值: 3.402823E+38
+精度值: 6
+```
+
+> %E 格式化符号用于输出浮点数，其中 E 表示指数形式。
 
 除了刚才讲的基本数据类型（整型、浮点型、字符型）外还有：
 
@@ -454,6 +526,8 @@ int main()
 ### 操作符
 
 > 操作符是用来执行特定操作的符号。
+
+#### 1. 算术运算符
 
 其中算术运算符有：`+`、`-`、`*`、`/`、`%`  
 
@@ -481,217 +555,315 @@ a / b = 1
 a % b = 1
 ```
 
-逻辑运算符有：`||`、`&&`、`!`
-关系运算符有：`==`、`!=`、`>`、`>=`、`<=`
+#### 2. 赋值运算符
+
 赋值运算符有：`=`、`+=`、`-=`、`*=`、`/=`、`%=`
+
+举例：
+
+```c
+int a = 20;
+int b = 10;
+
+a += b; // a = a + b
+a -= b; // a = a - b
+a *= b; // a = a * b
+a /= b; // a = a / b
+a %= b; // a = a % b
+```
+
+#### 3. 关系运算符
+
+关系运算符有：`==`、`!=`、`>`、`>=`、`<=`
+
+举例：
+
+```c
+int a = 20;
+int b = 10;
+
+printf("%d == %d? %d\n", a, b, a == b); // 等于
+printf("%d!= %d? %d\n", a, b, a!= b); // 不等于
+printf("%d > %d? %d\n", a, b, a > b); // 大于
+printf("%d >= %d? %d\n", a, b, a >= b); // 大于等于
+printf("%d < %d? %d\n", a, b, a < b); // 小于
+printf("%d <= %d? %d\n", a, b, a <= b); // 小于等于
+```
+
+#### 4. 逻辑运算符
+
+逻辑运算符有：`||`、`&&`、`!`
+
+和关系运算一样逻辑运算的结果也只有 0 或 1。
+
+举例：
+
+```c
+int a = 10;
+int b = 20;
+
+printf("%d", a > 0 && b < 30); // 输出 1
+printf("%d", a > 0 || b > 30); // 输出 1
+printf("%d",!(a > 10)); // 输出 0
+```
 
 ### 控制结构
 
 > 控制结构是程序的执行流程的控制语句。
 
-1. 条件语句：`if`
+#### 1. 条件语句：if
    
-   条件语句是用来判断条件是否成立，并根据条件的成立与否执行不同的代码块。
+条件语句是用来判断条件是否成立，并根据条件的成立与否执行不同的代码块。
 
-   条件语句的语法：
+条件语句的语法：
 
-   ```c
-   if (条件表达式) 
-   {
-       // 条件表达式为 true 时执行的代码块
-   }
-   else 
-   {
-       // 条件表达式都不成立时执行的代码块
-   }
-   ```
+```c
+if (条件表达式) 
+{
+    // 条件表达式为 true 时执行的代码块
+}
+else 
+{
+    // 条件表达式都不成立时执行的代码块
+}
+```
 
-   示例：
+示例：
 
-   ```c
-   #include <stdio.h>
+```c
+#include <stdio.h>
 
-   int main()
-   {
-       int x = 10;
-       int y = 20;
+int main()
+{
+    int x = 10;
+    int y = 20;
 
-       if (x == y)
-       {
-           printf("%d is equal to %d\n", x, y);
-       }
-       else
-       {
-           printf("%d is not equal to %d\n", x, y);
-       }
+    if (x == y)
+    {
+        printf("%d is equal to %d\n", x, y);
+    }
+    else
+    {
+        printf("%d is not equal to %d\n", x, y);
+    }
 
-       return 0;
-   }
-   ```
+    return 0;
+}
+```
 
-2. 循环语句：`for`
+#### 2. 循环语句：for
 
-   循环语句是用来重复执行代码块的语句。
+循环语句是用来重复执行代码块的语句。
 
-   循环语句的语法：
+循环语句的语法：
 
-   ```c
-   for (初始化表达式; 条件表达式; 迭代表达式) 
-   {
-       // 循环体
-   }
-   ```
+```c
+for (初始化表达式; 条件表达式; 迭代表达式) 
+{
+    // 循环体
+}
+```
 
-   示例：
+示例：
 
-   ```c
-   #include <stdio.h>
+```c
+#include <stdio.h>
 
-   int main()
-   {
-       int i;
+int main()
+{
+    int i;
 
-       for (i = 0; i < 5; i++)
-       {
-           printf("%d\n", i);
-       }
+    for (i = 0; i < 5; i++)
+    {
+        printf("%d\n", i);
+    }
 
-       return 0;
-   }
-   ```
+    return 0;
+}
+```
 
-   疑问：i++ 和 ++i 有什么区别？
+疑问：`i++` 和 `++i` 有什么区别？
 
-   答案：i++ 是后置递增，而 ++i 是前置递增。
+答案：`i++` 是后置递增，而 `++i` 是前置递增。
 
-   示例：
+示例：
 
-   ```c
-   #include <stdio.h>
+```c
+#include <stdio.h>
 
-   int main() {
-       int i = 5;
-       int a, b;
+int main() {
+    int i = 5;
+    int a, b;
 
-       // 后置递增 i++
-       a = i++;  // 先将 i 的值（5）赋给 a，然后 i 增加 1（i 变为 6）
-       printf("After a = i++, i: %d, a: %d\n", i, a);  // 输出：i: 6, a: 5
+    // 后置递增 i++
+    a = i++;  // 先将 i 的值（5）赋给 a，然后 i 增加 1（i 变为 6）
+    printf("After a = i++, i: %d, a: %d\n", i, a);  // 输出：i: 6, a: 5
 
-       // 重置 i
-       i = 5;
+    // 重置 i
+    i = 5;
 
-       // 前置递增 ++i
-       b = ++i;  // 先将 i 增加 1（i 变为 6），然后将 i 的值（6）赋给 b
-       printf("After b = ++i, i: %d, b: %d\n", i, b);  // 输出：i: 6, b: 6
+    // 前置递增 ++i
+    b = ++i;  // 先将 i 增加 1（i 变为 6），然后将 i 的值（6）赋给 b
+    printf("After b = ++i, i: %d, b: %d\n", i, b);  // 输出：i: 6, b: 6
 
-       return 0;
-   }
-   ```
+    return 0;
+}
+```
 
-3. 跳转语句：`goto`
+#### 3. 跳转语句：goto
    
-   跳转语句是用来改变程序执行流程的语句。
+跳转语句是用来改变程序执行流程的语句。
 
-   跳转语句的语法：
+跳转语句的语法：
 
-   ```c
-   goto 标签名;
-   ```
-   
-   > 标签名写法：名字后面加上冒号 `:`
+```c
+goto 标签名;
+```
 
-   示例：
+> 标签名写法：名字后面加上冒号 `:`
 
-   ```c
-   #include <stdio.h>
+示例：
 
-   int main()
-   {
-       for (i = 0; i < 5; i++)
-       {
-           if (i == 3)
-           {
-               goto end; // 跳转到 end 标签
-           }
-           printf("%d\n", i);
-       }
+```c
+#include <stdio.h>
 
-   end:
-       printf("end\n"); // 标签 end
+int main()
+{
+    for (i = 0; i < 5; i++)
+    {
+        if (i == 3)
+        {
+            goto end; // 跳转到 end 标签
+        }
+        printf("%d\n", i);
+    }
 
-       return 0;
-   }
-   ```
+end:
+    printf("end\n"); // 标签 end
+
+    return 0;
+}
+```
 
 ### 函数
 
 > 函数是程序中用来执行特定功能的子程序。
 
-1. 函数的定义：`返回类型` `函数名` `(参数类型 参数名)` `{函数体}`
-2. 函数的调用：`函数名` `(参数值)`
-3. 示例：
-   ```c
-   #include <stdio.h>
+#### 1. 函数的声明
 
-   // 定义一个求和函数
-   int sum(int a, int b)
-   {
-       return a + b;
-   }
+`返回类型` `函数名` `(参数类型 参数名)` `{函数体}`
 
-   int main()
-   {
-       int x = 10;
-       int y = 20;
-       int z = sum(x, y); // 调用函数求和
-       printf("The sum of %d and %d is %d\n", x, y, z);
+示例：
 
-       return 0;
-   }
-   ```
+定义一个比大小的函数：
 
+```c
+int compare(int a, int b)
+{
+    if (a > b)
+    {
+        return 1;
+    }
+    else if (a < b)
+    {
+        return -1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+```
+
+#### 2. 函数的调用
+
+调用方式：`函数名` `(参数1, 参数2, ...)`
+示例：
+
+```c
+#include <stdio.h>
+
+int compare(int a, int b)
+{
+    if (a > b)
+    {
+        return 1;
+    }
+    else if (a < b)
+    {
+        return -1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+int main()
+{
+    int x = 10;
+    int y = 20;
+    int result = compare(x, y); // 调用函数
+
+    if (result == 1)
+    {
+        printf("%d is greater than %d\n", x, y);
+    }
+    else if (result == -1)
+    {
+        printf("%d is less than %d\n", x, y);
+    }
+    else
+    {
+        printf("%d is equal to %d\n", x, y);
+    }
+
+    return 0;
+}
+```
+   
 ### 模块化
 
 > 模块化是指将一个大型程序分解为多个小模块，每个模块只完成特定的功能，然后再将这些模块组合起来组成一个完整的程序。
 
-1. 头文件：
+#### 1. 头文件
 
-   头文件是模块化的重要组成部分。头文件中包含了模块的接口（函数声明），模块的实现（函数定义）和全局变量声明。
+头文件是模块化的重要组成部分。头文件中包含了模块的接口（函数声明），模块的实现（函数定义）和全局变量声明。
 
-   头文件以 `.h` 结尾，包含了模块的接口。
+头文件以 `.h` 结尾，包含了模块的接口。
 
-   示例：
+示例： 新建 my_header_file.h 文件
 
-   ```c
-   // 声明一个求和的函数
-   int sum(int a, int b)
-   {
-       return a + b;
-   }
-   ```
+```c
+// 声明一个求和的函数
+int sum(int a, int b)
+{
+    return a + b;
+}
+```
 
-2. 示例：
+#### 2. 示例：
 
-   ```c
-   #include <stdio.h>
-   #include "my_header_file.h" // 包含头文件
+```c
+#include <stdio.h>
+#include "my_header_file.h" // 包含头文件
 
-   int main()
-   {
-       int x = 10;
-       int y = 20;
-       int z = sum(x, y); // 调用函数求和
-       printf("The sum of %d and %d is %d\n", x, y, z);
+int main()
+{
+    int x = 10;
+    int y = 20;
+    int z = sum(x, y); // 调用函数求和
+    printf("The sum of %d and %d is %d\n", x, y, z);
 
-       return 0;
-   }
-   ```
+    return 0;
+}
+```
 
 ### 作用域
 
 > 作用域是程序中变量、函数、结构体等符号的可访问范围。
 
-以下是全局作用域和局部作用域的区别，用表格展示：
+以下是全局作用域和局部作用域的区别
 
 | 作用域         | 变量类型 | 访问范围                   |
 | -------------- | -------- | -------------------------- |
