@@ -16,9 +16,16 @@ grep -oP '(?<=<loc>).*?(?=</loc>)' "$SITEMAP_PATH" > urls.txt
 URL_COUNT=$(wc -l < urls.txt)
 echo "Extracted $URL_COUNT URLs and saved them to urls.txt."
 
-# Use curl to submit all URLs in urls.txt to Baidu
-echo "Submitting URLs to Baidu..."
-response=$(curl -s -H 'Content-Type:text/plain' --data-binary @urls.txt "$BAIDU_API_URL")
+# Randomly select 10 URLs from urls.txt and save them to random_urls.txt
+echo "Selecting 10 random URLs..."
+shuf urls.txt | head -n 10 > random_urls.txt
+
+SELECTED_URL_COUNT=$(wc -l < random_urls.txt)
+echo "Selected $SELECTED_URL_COUNT random URLs and saved them to random_urls.txt."
+
+# Use curl to submit the selected URLs to Baidu
+echo "Submitting random URLs to Baidu..."
+response=$(curl -s -H 'Content-Type:text/plain' --data-binary @random_urls.txt "$BAIDU_API_URL")
 
 # Print the response from the curl command
 echo "Response from Baidu: $response"
