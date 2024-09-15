@@ -4,7 +4,7 @@ authors: ["qlAD"]
 categories: ["笔记"]
 tags: ["数学", "逻辑用语"]
 slug: "math-01-02"
-summary: ""
+summary: "本篇文章介绍了一些常用的逻辑用语。"
 series: ["Math"]
 series_weight: 2
 seriesNavigation: true

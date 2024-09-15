@@ -4,13 +4,15 @@ authors: ["qlAD"]
 categories: ["技术"]
 tags: ["C/C++", "编程", "算法"]
 slug: "algorithm_01"
-summary: ""
+summary: "本篇文章主要介绍递归函数的缺陷，引出递推算法，并用 for 循环和数组来求解斐波那契数列和分数求和。"
 series: ["Algorithm"]
 series_weight: 2
 seriesNavigation: true
 draft: false
 date: "2024-01-12"
 ---
+
+原系列视频作者链接：[【从0开始的C++算法课】第01期 | 递归(二) | 递归函数的缺陷 && 引出递推算法](https://www.bilibili.com/video/)
 
 有一对兔子，从出生后的第三个月起，每个月都生一对兔子，一对兔子成长到第三个月后每个月有生一对兔子，假如兔子都不死，问第 n 个月的兔子总数是多少对？
 

@@ -4,7 +4,7 @@ authors: ["qlAD", "ChatGPT"]
 categories: ["技术"]
 tags: ["博客", "软件", "工具"]
 slug: "markdown"
-summary: ""
+summary: "本文介绍了 Markdown 语法的基本用法，并提供了一些示例。"
 # series: ["CS"]
 # series_weight: 1
 # seriesNavigation: true

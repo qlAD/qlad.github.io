@@ -4,7 +4,7 @@ authors: ["qlAD"]
 categories: ["技术"]
 tags: ["Gentoo", "环境配置"]
 slug: "gentoo_bak"
-summary: ""
+summary: "本文为 Gentoo 学习笔记，主要介绍 Gentoo 的安装、Bspwm 窗口管理器的配置、软件工具的安装。"
 # series: ["Linux"]
 # series_weight: 
 # seriesNavigation: true

@@ -4,7 +4,7 @@ authors: ["qlAD"]
 categories: ["English"]
 tags: [English]
 slug: "start-english"
-# summary: ""
+summary: "This is the first post of English blog"
 # series: [""]
 # series_weight: 1
 # seriesNavigation: true

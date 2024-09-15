@@ -4,7 +4,7 @@ authors: ["qlAD"]
 categories: ["笔记"]
 tags: ["数学", "集合"]
 slug: "math-01-01"
-summary: ""
+summary: "本篇文章介绍了集合的概念及其性质，以及集合间的基本关系、子集个数、集合的基本运算等内容。"
 series: ["Math"]
 series_weight: 1
 seriesNavigation: true

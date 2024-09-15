@@ -4,13 +4,15 @@ authors: ["qlAD"]
 categories: ["技术"]
 tags: ["C/C++", "编程", "算法"]
 slug: "algorithm_02"
-summary: ""
+summary: "本篇文章将介绍递推算法的基本概念，经典题型解析，以及过河卒问题的递推算法求解。"
 series: ["Algorithm"]
 series_weight: 3
 seriesNavigation: true
 draft: false
 date: "2024-01-12"
 ---
+
+原系列视频作者链接：[【从0开始的C++算法课】第02期 | 递推算法 | 经典题型解析 | 过河卒问题（递推算法求解）](https://www.bilibili.com/video/BV1FC4y1E7BD/)
 
 {{< figure src="https://s2.loli.net/2024/01/12/KbSN5BrwUxaj7qs.png" >}}
 

@@ -4,7 +4,7 @@ authors: ["qlAD"]
 categories: ["日常"]
 tags: ["家乡", "风景"]
 slug: "my-home"
-summary: ""
+summary: "本篇文章介绍了我的家乡，以及我在那里的生活。"
 # series: [""]
 # series_weight: 1
 # seriesNavigation: true

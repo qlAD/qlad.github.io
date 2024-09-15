@@ -4,7 +4,7 @@ authors: ["qlAD", "ChatGPT"]
 categories: ["技术"]
 tags: ["计算机专业", "题库"]
 slug: "cs_03_test"
-summary: ""
+summary: "本文是一套计算机基础知识 100 题的题库，适合计算机专业的学生学习。"
 # series: ["CS"]
 # series_weight: 1
 # seriesNavigation: true

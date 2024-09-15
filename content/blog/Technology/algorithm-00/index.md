@@ -4,13 +4,15 @@ authors: ["qlAD"]
 categories: ["技术"]
 tags: ["C/C++", "编程", "算法"]
 slug: "algorithm_00"
-summary: ""
+summary: "本篇文章介绍了环境搭建、递归的基本概念、基本数列递归的求解方法。"
 series: ["Algorithm"]
 series_weight: 1
 seriesNavigation: true
 draft: false
 date: "2024-01-10"
 ---
+
+原系列视频作者链接：[【从0开始的C++算法课】第00期 | 环境搭建 & 递归 (一) | 基本数列递归](https://www.bilibili.com/video/BV1Bu4y1Y7ow/)
 
 需求：使用递归方式求解等差数列 1 4 7 10 13 … 第 n 项的值，要求输入 n 输出第 n 项的值
 

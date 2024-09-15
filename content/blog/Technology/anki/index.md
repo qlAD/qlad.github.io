@@ -4,7 +4,7 @@ authors: ["qlAD", "ChatGPT"]
 categories: ["技术"]
 tags: ["安利", "软件", "记忆"]
 slug: "anki"
-summary: ""
+summary: "本文介绍了 Anki 软件，并简要介绍了它的特点、适用场景、使用方法。"
 # series: ["CS"]
 # series_weight: 1
 # seriesNavigation: true

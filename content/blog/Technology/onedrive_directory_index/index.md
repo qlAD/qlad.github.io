@@ -4,7 +4,7 @@ authors: ["qlAD"]
 categories: ["技术"]
 tags: ["博客", "软件", "工具"]
 slug: "onedrive_directory_index"
-summary: ""
+summary: "本文介绍了如何搭建 OneDrive 目录索引，并详细介绍了部署过程。"
 # series: ["CS"]
 # series_weight: 1
 # seriesNavigation: true

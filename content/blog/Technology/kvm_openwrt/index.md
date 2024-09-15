@@ -4,7 +4,7 @@ authors: ["qlAD"]
 categories: ["技术"]
 tags: ["软路由", "环境配置"]
 slug: "kvm_openwrt"
-summary: ""
+summary: "本文介绍了 KVM 安装 OpenWRT 作为旁路由的过程，并介绍了我的电脑环境配置。"
 # series: ["Linux"]
 # series_weight: 
 # seriesNavigation: true

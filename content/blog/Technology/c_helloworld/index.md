@@ -4,7 +4,7 @@ authors: ["qlAD"]
 categories: ["技术"]
 tags: ["C/C++", "编程"]
 slug: "c_helloworld"
-summary: ""
+summary: "本文将逐字符讲解 C 语言 HelloWorld 程序，并详细介绍 C 语言的基本语法和常用预处理命令。"
 # series: ["CS"]
 # series_weight: 1
 # seriesNavigation: true

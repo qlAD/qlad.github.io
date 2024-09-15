@@ -4,7 +4,7 @@ authors: ["qlAD", "ChatGPT"]
 categories: ["技术"]
 tags: ["计算机专业", "题库", "Linux"]
 slug: "cs_04_test"
-summary: ""
+summary: "本文是一套 Linux 笔试 50 题，主要考察候选人对 Linux 操作系统的基本使用技能。"
 # series: ["CS"]
 # series_weight: 1
 # seriesNavigation: true

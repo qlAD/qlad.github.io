@@ -4,7 +4,7 @@ authors: ["qlAD"]
 categories: ["技术"]
 tags: ["博客", "软件", "工具"]
 slug: "submit_baidu_index"
-summary: "通过 GitHub Actions 自动提交百度收录，提高网站内容更新的效率和准确性。"
+summary: "本文将介绍如何通过 GitHub Actions 自动提交百度收录，提高网站内容更新的效率和准确性。"
 draft: false
 date: 2024-09-12T09:15:26+08:00
 ---

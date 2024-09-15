@@ -4,7 +4,7 @@ authors: ["qlAD"]
 categories: ["技术"]
 tags: ["计算机专业", "网站"]
 slug: "cs_02"
-summary: ""
+summary: "本文介绍了服务器和 GitHub 的基本概念，以及网站的基本原理、上线的基本要素、域名、服务器、DNS、网站开发三剑客、使用框架、GitHub 简单介绍、白嫖、分享、GitHub Page。"
 series: ["CS"]
 series_weight: 2
 seriesNavigation: true

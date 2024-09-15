@@ -4,7 +4,7 @@ authors: ["qlAD"]
 categories: ["技术"]
 tags: ["计算机专业", "环境配置"]
 slug: "cs_01"
-summary: ""
+summary: "本文介绍了配置一个顺手的浏览器、代码编辑器、虚拟机、远程连接软件、终端工具的步骤。"
 series: ["CS"]
 series_weight: 1
 seriesNavigation: true

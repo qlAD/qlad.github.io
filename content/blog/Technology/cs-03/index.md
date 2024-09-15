@@ -4,7 +4,7 @@ authors: ["qlAD"]
 categories: ["技术"]
 tags: ["计算机专业"]
 slug: "cs_03"
-summary: ""
+summary: "本文介绍计算机系统的组成及其发展历史。"
 series: ["CS"]
 series_weight: 3
 seriesNavigation: true
