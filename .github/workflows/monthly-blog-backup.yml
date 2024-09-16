@@ -52,7 +52,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: 'Released on ${{ env.RELEASE_DATE }}'
+        tag_name: 'released-on-${{ env.RELEASE_DATE }}'
         release_name: 'Monthly Blog Backup'
         draft: false
         prerelease: false
