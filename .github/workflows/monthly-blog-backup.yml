@@ -3,7 +3,7 @@ name: Monthly Blog Zip Release
 on:
   schedule:
     - cron: '0 0 30 * *'  # 每月 30 号的 UTC 时间 00:00
-  workflow_dispatch:  # 手动触发
+  workflow_dispatch:  # 允许手动触发
 
 jobs:
   create_release:
@@ -38,7 +38,7 @@ jobs:
     - name: Zip all files in content/blog directory
       run: |
         cd content/blog
-        zip -r ../../blog_bak_${{ env.RELEASE_DATE }}.zip ./*
+        zip -r ../../blogs_bak_${{ env.RELEASE_DATE }}.zip ./*
 
     # 获取 zip 文件大小
     - name: Get zip file size
