@@ -19,14 +19,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Set release date
+      id: release_date
+      run: echo "RELEASE_DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
+
     - name: Zip blog content
       run: |
         cd content/blog
         zip -r ../../blogs_${{ env.RELEASE_DATE }}.zip ./*
-
-    - name: Set release date
-      id: release_date
-      run: echo "RELEASE_DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
 
     - name: Calculate post and image counts
       id: counts
