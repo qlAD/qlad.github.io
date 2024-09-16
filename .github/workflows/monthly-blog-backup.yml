@@ -1,0 +1,76 @@
+name: Monthly Blog Zip Release
+
+on:
+  schedule:
+    - cron: '0 0 30 * *'  # 每月 30 号的 UTC 时间 00:00
+  workflow_dispatch:  # 手动触发
+
+jobs:
+  create_release:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 检出代码仓库
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # 获取当前日期，作为文件名和 tag 的一部分
+    - name: Get current date
+      id: date
+      run: echo "RELEASE_DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
+
+    # 统计中文文章数（index.md 文件）
+    - name: Count Chinese blog posts
+      id: count_chinese_posts
+      run: echo "CHINESE_POST_COUNT=$(find content/blog -name 'index.md' | wc -l)" >> $GITHUB_ENV
+
+    # 统计英文文章数（index.en.md 文件）
+    - name: Count English blog posts
+      id: count_english_posts
+      run: echo "ENGLISH_POST_COUNT=$(find content/blog -name 'index.en.md' | wc -l)" >> $GITHUB_ENV
+
+    # 统计图片数（假设图片是 .jpg 和 .png 格式）
+    - name: Count images
+      id: count_images
+      run: echo "IMAGE_COUNT=$(find content/blog -name '*.jpg' -o -name '*.png' | wc -l)" >> $GITHUB_ENV
+
+    # 进入 content/blog 目录并将其中所有文件打包为带有日期的 zip 文件
+    - name: Zip all files in content/blog directory
+      run: |
+        cd content/blog
+        zip -r ../../blog_bak_${{ env.RELEASE_DATE }}.zip ./*
+
+    # 获取 zip 文件大小
+    - name: Get zip file size
+      id: file_size
+      run: echo "ZIP_SIZE=$(du -m blog_bak_${{ env.RELEASE_DATE }}.zip | cut -f1)" >> $GITHUB_ENV
+
+    # 创建一个 release 并上传 zip 文件
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: 'Released on ${{ env.RELEASE_DATE }}'
+        release_name: 'Monthly Blog Backup'
+        draft: false
+        prerelease: false
+        body: |
+          ### 📅 ${{ env.RELEASE_DATE }} 博客文章备份
+
+          - **中文文章**: ${{ env.CHINESE_POST_COUNT }} 篇
+          - **英文文章**: ${{ env.ENGLISH_POST_COUNT }} 篇
+          - **图片**: ${{ env.IMAGE_COUNT }} 张
+          - **压缩包大小**: ${{ env.ZIP_SIZE }} MB
+
+          > 此备份包括所有博客文章和图片的压缩包文件，可用于恢复和迁移。
+
+    # 上传带日期的 zip 文件到 release
+    - name: Upload ZIP to Release
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./blog_bak_${{ env.RELEASE_DATE }}.zip
+        asset_name: blog_bak_${{ env.RELEASE_DATE }}.zip
+        asset_content_type: application/zip
