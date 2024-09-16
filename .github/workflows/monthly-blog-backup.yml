@@ -19,6 +19,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Zip blog content
+      run: |
+        cd content/blog
+        zip -r ../../blogs_${{ env.RELEASE_DATE }}.zip ./*
+
     - name: Set release date
       id: release_date
       run: echo "RELEASE_DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
@@ -29,16 +34,13 @@ jobs:
         CHINESE_POST_COUNT=$(find ./content/blog -name 'index.md' | wc -l)
         ENGLISH_POST_COUNT=$(find ./content/blog -name 'index.en.md' | wc -l)
         IMAGE_COUNT=$(find ./content/blog -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' | wc -l)
-        ZIP_SIZE=$(du -sh ./content/blog | cut -f1)
+        ZIP_SIZE=$(du -m blogs_${{ env.RELEASE_DATE }}.zip | cut -f1)
 
         # Save state using environment files
         echo "CHINESE_POST_COUNT=$CHINESE_POST_COUNT" >> $GITHUB_ENV
         echo "ENGLISH_POST_COUNT=$ENGLISH_POST_COUNT" >> $GITHUB_ENV
         echo "IMAGE_COUNT=$IMAGE_COUNT" >> $GITHUB_ENV
         echo "ZIP_SIZE=$ZIP_SIZE" >> $GITHUB_ENV
-
-    - name: Zip blog content
-      run: zip -r "blogs_${{ env.RELEASE_DATE }}.zip" ./content/blog
 
     - name: Create GitHub Release and Upload Asset
       uses: softprops/action-gh-release@v2
@@ -51,9 +53,9 @@ jobs:
           - **中文文章**: ${{ env.CHINESE_POST_COUNT }} 篇
           - **英文文章**: ${{ env.ENGLISH_POST_COUNT }} 篇
           - **图片**: ${{ env.IMAGE_COUNT }} 张
-          - **压缩包大小**: ${{ env.ZIP_SIZE }}
+          - **压缩包大小**: ${{ env.ZIP_SIZE }} MB
 
           > 此备份包括所有博客文章和图片的压缩包文件，可用于恢复和迁移。
-        files: "blogs_${{ env.RELEASE_DATE }}.zip"
+        files: ./blogs_${{ env.RELEASE_DATE }}.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
