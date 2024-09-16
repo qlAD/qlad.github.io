@@ -12,6 +12,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Set release date
+      id: release_date
+      run: echo "RELEASE_DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
+
     - name: Calculate post and image counts
       id: counts
       run: |
@@ -27,16 +31,16 @@ jobs:
         echo "ZIP_SIZE=$ZIP_SIZE" >> $GITHUB_STATE
 
     - name: Zip blog content
-      run: zip -r "blogs_${{ github.event.release.tag_name }}.zip" ./content/blog
+      run: zip -r "blogs_${{ env.RELEASE_DATE }}.zip" ./content/blog
 
     - name: Create GitHub Release
       id: create_release
       uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # 使用默认的 GitHub Token
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
       with:
-        tag_name: ${{ github.event.release.tag_name }}
-        release_name: "📅 ${{ github.event.release.tag_name }} 博客文章备份"
+        tag_name: ${{ env.RELEASE_DATE }} 
+        release_name: "📅 ${{ env.RELEASE_DATE }} 博客文章备份"
         draft: false
         prerelease: false
         body: |
@@ -51,6 +55,6 @@ jobs:
       uses: actions/upload-release-asset@v1
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: "blogs_${{ github.event.release.tag_name }}.zip"
-        asset_name: "blogs_${{ github.event.release.tag_name }}.zip"
+        asset_path: "blogs_${{ env.RELEASE_DATE }}.zip"
+        asset_name: "blogs_${{ env.RELEASE_DATE }}.zip"
         asset_content_type: application/zip
