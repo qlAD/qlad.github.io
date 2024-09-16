@@ -5,12 +5,19 @@ on:
     - cron: '0 0 30 * *'  # 每月 30 号运行
   workflow_dispatch:       # 手动触发
 
+permissions:
+  contents: write
+  actions: write
+  deployments: write
+  packages: write
+
 jobs:
   create-release:
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set release date
       id: release_date
@@ -24,37 +31,39 @@ jobs:
         IMAGE_COUNT=$(find ./content/blog -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' | wc -l)
         ZIP_SIZE=$(du -sh ./content/blog | cut -f1)
 
-        # Save state using new environment files
-        echo "CHINESE_POST_COUNT=$CHINESE_POST_COUNT" >> $GITHUB_STATE
-        echo "ENGLISH_POST_COUNT=$ENGLISH_POST_COUNT" >> $GITHUB_STATE
-        echo "IMAGE_COUNT=$IMAGE_COUNT" >> $GITHUB_STATE
-        echo "ZIP_SIZE=$ZIP_SIZE" >> $GITHUB_STATE
+        # Save state using environment files
+        echo "CHINESE_POST_COUNT=$CHINESE_POST_COUNT" >> $GITHUB_ENV
+        echo "ENGLISH_POST_COUNT=$ENGLISH_POST_COUNT" >> $GITHUB_ENV
+        echo "IMAGE_COUNT=$IMAGE_COUNT" >> $GITHUB_ENV
+        echo "ZIP_SIZE=$ZIP_SIZE" >> $GITHUB_ENV
 
     - name: Zip blog content
       run: zip -r "blogs_${{ env.RELEASE_DATE }}.zip" ./content/blog
 
     - name: Create GitHub Release
       id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+      uses: actions/create-release@v2
       with:
         tag_name: ${{ env.RELEASE_DATE }} 
         release_name: "📅 ${{ env.RELEASE_DATE }} 博客文章备份"
         draft: false
         prerelease: false
         body: |
-          - **中文文章**: ${{ steps.counts.outputs.CHINESE_POST_COUNT }} 篇
-          - **英文文章**: ${{ steps.counts.outputs.ENGLISH_POST_COUNT }} 篇
-          - **图片**: ${{ steps.counts.outputs.IMAGE_COUNT }} 张
-          - **压缩包大小**: ${{ steps.counts.outputs.ZIP_SIZE }}
+          - **中文文章**: ${{ env.CHINESE_POST_COUNT }} 篇
+          - **英文文章**: ${{ env.ENGLISH_POST_COUNT }} 篇
+          - **图片**: ${{ env.IMAGE_COUNT }} 张
+          - **压缩包大小**: ${{ env.ZIP_SIZE }}
 
           > 此备份包括所有博客文章和图片的压缩包文件，可用于恢复和迁移。
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
+      uses: actions/upload-release-asset@v2
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: "blogs_${{ env.RELEASE_DATE }}.zip"
         asset_name: "blogs_${{ env.RELEASE_DATE }}.zip"
         asset_content_type: application/zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
