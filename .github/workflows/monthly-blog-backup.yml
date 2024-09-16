@@ -38,7 +38,7 @@ jobs:
     - name: Zip all files in content/blog directory
       run: |
         cd content/blog
-        zip -r ../../blogs_bak_${{ env.RELEASE_DATE }}.zip ./*
+        zip -r ../../blogs_${{ env.RELEASE_DATE }}.zip ./*
 
     # 获取 zip 文件大小
     - name: Get zip file size
@@ -52,8 +52,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: 'released-on-${{ env.RELEASE_DATE }}'
-        release_name: 'Monthly Blog Backup'
+        tag_name: '${{ env.RELEASE_DATE }}'
+        release_name: '📅 ${{ env.RELEASE_DATE }} 博客文章备份'
         draft: false
         prerelease: false
         body: |
