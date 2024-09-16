@@ -43,7 +43,7 @@ jobs:
     # 获取 zip 文件大小
     - name: Get zip file size
       id: file_size
-      run: echo "ZIP_SIZE=$(du -m blog_bak_${{ env.RELEASE_DATE }}.zip | cut -f1)" >> $GITHUB_ENV
+      run: echo "ZIP_SIZE=$(du -m blogs_${{ env.RELEASE_DATE }}.zip | cut -f1)" >> $GITHUB_ENV
 
     # 创建一个 release 并上传 zip 文件
     - name: Create Release
@@ -57,8 +57,6 @@ jobs:
         draft: false
         prerelease: false
         body: |
-          ### 📅 ${{ env.RELEASE_DATE }} 博客文章备份
-
           - **中文文章**: ${{ env.CHINESE_POST_COUNT }} 篇
           - **英文文章**: ${{ env.ENGLISH_POST_COUNT }} 篇
           - **图片**: ${{ env.IMAGE_COUNT }} 张
