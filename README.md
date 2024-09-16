@@ -1,12 +1,10 @@
-![_20240911_133727.png](https://s2.loli.net/2024/09/15/DNXv6KxlBeM3t1E.png)
+![](static/qladgk.png)
 
-> 博客中大部分页面模板来自 [大大的小蜗牛](https://www.eallion.com/) 的博客。
-> 
-> 可以去原作者的 [仓库](https://github.com/qlAD/Blog) 学习更多。
+> 博客中大部分页面模板来自 [大大的小蜗牛](https://www.eallion.com/) 的博客。可以去原作者的 [仓库](https://github.com/eallion/eallion.com) 学习更多。
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/qlAD/Blog) ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/qlAD/Blog) ![GitHub commits since tagged version](https://img.shields.io/github/commits-since/qlAD/Blog/latest/main) ![GitHub last commit](https://img.shields.io/github/last-commit/qlAD/Blog) 
 
-##### 本仓库用于存放个人博客的源代码，主要用于记录学习笔记、生活感悟、生活收获等内容。
+##### 本仓库用于存放个人博客的源代码，主要用于记录学习笔记、生活感悟、生活收获等内容。不定时更新，欢迎关注。每月 30 日自动将 content/blog 目录下的所有文章备份成 GitHub Release。
 
 ---
 
@@ -23,17 +21,20 @@
 
 #### 📦 迁移备份：
 
-- 安装 hugo 环境：
+- 迁移仓库：
 
 ```sh
 sudo pacman -S hugo
-```
-
-- 拉取博客仓库：
-
-```sh
 git clone https://github.com/qlad/Blog.git
 ```
+
+- 备份文章：GitHub Actions 自动备份 `content/blog` 目录下的所有文章到 Release。
+
+```bash
+https://github.com/qlAD/Blog/blob/main/.github/workflows/monthly-blog-backup.yml
+```
+
+
 
 #### 🔨 调试部署：
 
@@ -154,7 +155,7 @@ date: 2024-05-31
 #### 🖼️ 图片处理
 
 - 文章封面制作：[Coverview](https://coverview.vercel.app/editor)
-- 上传图片到图床 [SM.MS](https://sm.ms/)
+- 图床 [SM.MS](https://sm.ms/)
 
 #### 🌈 评论功能
 
