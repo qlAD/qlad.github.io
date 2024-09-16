@@ -34,7 +34,16 @@ git clone https://github.com/qlad/Blog.git
 https://github.com/qlAD/Blog/blob/main/.github/workflows/monthly-blog-backup.yml
 ```
 
+```md
+### 📅 ${{ env.RELEASE_DATE }} 博客文章备份
 
+- **中文文章**: ${{ env.CHINESE_POST_COUNT }} 篇
+- **英文文章**: ${{ env.ENGLISH_POST_COUNT }} 篇
+- **图片**: ${{ env.IMAGE_COUNT }} 张
+- **压缩包大小**: ${{ env.ZIP_SIZE }} MB
+
+> 此备份包括所有博客文章和图片的压缩包文件，可用于恢复和迁移。
+```
 
 #### 🔨 调试部署：
 
