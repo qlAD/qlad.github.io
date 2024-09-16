@@ -17,7 +17,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set release date
       id: release_date
@@ -40,12 +40,11 @@ jobs:
     - name: Zip blog content
       run: zip -r "blogs_${{ env.RELEASE_DATE }}.zip" ./content/blog
 
-    - name: Create GitHub Release
-      id: create_release
-      uses: actions/create-release@v2
+    - name: Create GitHub Release and Upload Asset
+      uses: softprops/action-gh-release@v2
       with:
-        tag_name: ${{ env.RELEASE_DATE }} 
-        release_name: "📅 ${{ env.RELEASE_DATE }} 博客文章备份"
+        tag_name: ${{ env.RELEASE_DATE }}
+        name: "📅 ${{ env.RELEASE_DATE }} 博客文章备份"
         draft: false
         prerelease: false
         body: |
@@ -55,15 +54,6 @@ jobs:
           - **压缩包大小**: ${{ env.ZIP_SIZE }}
 
           > 此备份包括所有博客文章和图片的压缩包文件，可用于恢复和迁移。
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Upload Release Asset
-      uses: actions/upload-release-asset@v2
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: "blogs_${{ env.RELEASE_DATE }}.zip"
-        asset_name: "blogs_${{ env.RELEASE_DATE }}.zip"
-        asset_content_type: application/zip
+        files: "blogs_${{ env.RELEASE_DATE }}.zip"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
