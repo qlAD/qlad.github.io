@@ -4,21 +4,15 @@ on:
   push:
     branches:
       - main
-  schedule:
-    - cron: "0 0 1 * *"
   workflow_dispatch:
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-    env:
-      DOCKER_CACHEDIR: /tmp/.docker-cache
-      HUGO_CACHEDIR: /tmp/.hugo_cache
-      HUGOMODS_CACHEDIR: /tmp/.hugo_mods_cache
-      PNPM_CACHEDIR: /tmp/.pnpm-cache
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           submodules: true
           fetch-depth: 0
@@ -40,8 +34,3 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           quiet: true
           command: pages deploy public --project-name=${{ secrets.CLOUDFLARE_PROJECT_NAME }} --commit-dirty=true
-
-      - name: Submit URLs to Baidu
-        env:
-          BAIDU_API_URL: ${{ secrets.BAIDU_API_URL }} # Securely reference the secret
-        run: scripts/submit_urls.sh
