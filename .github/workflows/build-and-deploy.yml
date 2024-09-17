@@ -9,6 +9,8 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
 
     steps:
       - name: Checkout repository
@@ -27,12 +29,12 @@ jobs:
         run: |
           hugo --minify --enableGitInfo
 
-      - name: Publish Site to public-pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Publish Site to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: public-pages
+          publish_branch: gh-pages
           publish_dir: ./public
 
       - name: Publish to Cloudflare Pages

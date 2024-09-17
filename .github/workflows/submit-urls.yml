@@ -20,7 +20,7 @@ jobs:
       - name: Checkout gh-pages branch
         uses: actions/checkout@v4
         with:
-          ref: public-pages
+          ref: gh-pages
           path: public
 
       # 设置运行脚本需要的权限
