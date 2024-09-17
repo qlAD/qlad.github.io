@@ -24,8 +24,12 @@
 - 迁移仓库：
 
 ```sh
-sudo pacman -S hugo
-git clone https://github.com/qlad/Blog.git
+# 安装依赖
+sudo pacman -S hugo pnpm
+# 克隆仓库及子模块
+git clone --recurse-submodules https://github.com/qlAD/Blog BlogGithub/ && cd BlogGithub/
+# 本地服务器启动
+pnpm install && pnpm run server
 ```
 
 - 备份文章：GitHub Actions 自动备份 `content/blog` 目录下的所有文章到 Release。
@@ -47,10 +51,10 @@ https://github.com/qlAD/Blog/blob/main/.github/workflows/monthly-blog-backup.yml
 
 #### 🔨 调试部署：
 
-- `npm run dev` 监听 Tailwind CSS 样式：
-- `npm run server` 启动本地服务器：
-- `npm run build` 构建 Tailwind CSS 样式，位于 `assets/css/compiled/main.css`：
-- `npm run submodule` 更新 git submodule：
+- `pnpm run dev` 监听 Tailwind CSS 样式：
+- `pnpm run server` 启动本地服务器：
+- `pnpm run build` 构建 Tailwind CSS 样式，位于 `assets/css/compiled/main.css`：
+- `pnpm run submodule` 更新 git submodule：
 - `git push origin main` 部署博客（推送到 GitHub 仓库即可）：
 
 ```json
