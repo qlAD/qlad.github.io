@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set the path to the sitemap file
-SITEMAP_PATH="zh-cn/sitemap.xml"
+SITEMAP_PATH="public/zh-cn/sitemap.xml"
 
 # Ensure BAIDU_API_URL is set
 if [ -z "$BAIDU_API_URL" ]; then
