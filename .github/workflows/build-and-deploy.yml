@@ -31,7 +31,7 @@ jobs:
 
       - name: Build Hugo for Cloudflare Pages
         run: |
-          hugo --minify --enableGitInfo --baseURL "https://www.qladgk.blog/ --destination ./public-cf-pages
+          hugo --minify --enableGitInfo --baseURL "https://www.qladgk.blog/" --destination ./public-cf-pages
 
       - name: Publish Site to gh-pages
         uses: peaceiris/actions-gh-pages@v4
