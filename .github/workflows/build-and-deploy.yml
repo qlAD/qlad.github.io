@@ -25,9 +25,9 @@ jobs:
           hugo-version: "latest"
           extended: true
 
-      - name: Build Hugo
+      - name: Build Hugo for GitHub Pages
         run: |
-          hugo --minify --enableGitInfo
+          hugo --minify --enableGitInfo --baseURL "https://qlad.github.io/Blog/" --destination ./public-gh-pages
 
       - name: Publish Site to gh-pages
         uses: peaceiris/actions-gh-pages@v4
@@ -35,7 +35,11 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: ./public
+          publish_dir: ./public-gh-pages
+
+      - name: Build Hugo for Cloudflare Pages
+        run: |
+          hugo --minify --enableGitInfo --baseURL "https://www.qladgk.blog/ --destination ./public-cf-pages
 
       - name: Publish to Cloudflare Pages
         if: ${{ github.ref == 'refs/heads/main' }}
@@ -44,4 +48,4 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           quiet: true
-          command: pages deploy public --project-name=${{ secrets.CLOUDFLARE_PROJECT_NAME }} --commit-dirty=true
+          command: pages deploy ./public-cf-pages --project-name=${{ secrets.CLOUDFLARE_PROJECT_NAME }} --commit-dirty=true
