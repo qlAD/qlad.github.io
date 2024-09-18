@@ -17,7 +17,12 @@
 #### 🚀 托管部署：
 
 - 博客仓库：[https://github.com/qlAD/Blog](https://github.com/qlAD/Blog)
-- 博客使用 GitHub Actions 自动部署到 Cloudflare Pages。
+- 博客部署:
+
+  通过 GitHub Actions 自动部署到 Cloudflare Pages 和 GitHub Pages。然后通过自定义规则进行重定向。
+
+  - Cloudflare Pages: [https://www.qladgk.blog](https://www.qladgk.blog)
+  - Github Pages: [https://cn.qladgk.blog](https://cn.qladgk.blog)
 
 #### 📦 迁移备份：
 
@@ -167,12 +172,19 @@ date: 2024-05-31
 
 #### 🖼️ 图片处理
 
-- 文章封面制作：[Coverview](https://coverview.vercel.app/editor)
 - 图床 [SM.MS](https://sm.ms/)
-
+- 图表制作：
+  - [Excalidraw](https://excalidraw.com/)：手绘风格的开源工具
+  - [Mermaid](https://mermaid-js.github.io/mermaid/)：支持 Markdown 的流程图工具
+- 文章封面制作：[Coverview](https://coverview.vercel.app/editor)
+- 背景图来源：[Unsplash](https://unsplash.com/)
 #### 🌈 评论功能
 
 - 评论系统使用 [giscus](https://giscus.app/) （GitHub Discussions 功能）
+
+> [!TIP] 更多
+> 有关我的更多博客文章制作过程，请参考我的 [“如何写一篇优秀的博客”
+](https://www.qladgk.blog/how-blogging/)。
 
 #### 📊 网站分析
 
@@ -184,9 +196,9 @@ date: 2024-05-31
 - [大大的小蜗牛](https://www.eallion.com/)
 - [Hugo](https://gohugo.io/)
 - [Blowfish](https://blowfish.page/)
+- [GitHub Actions](https://github.com/features/actions)
 - [giscus](https://giscus.app/)
 - [SM.MS](https://sm.ms/)
 - [Coverview](https://coverview.vercel.app/editor)
 - [Cloudflare Pages](https://pages.cloudflare.com/)
 - [Google analytics](https://analytics.google.com/analytics/web/)
-- [GitHub Actions](https://github.com/features/actions)
