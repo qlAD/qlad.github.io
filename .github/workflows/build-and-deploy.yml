@@ -29,6 +29,10 @@ jobs:
         run: |
           hugo --minify --enableGitInfo --baseURL "https://qlad.github.io/Blog/" --destination ./public-gh-pages
 
+      - name: Build Hugo for Cloudflare Pages
+        run: |
+          hugo --minify --enableGitInfo --baseURL "https://www.qladgk.blog/ --destination ./public-cf-pages
+
       - name: Publish Site to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         if: ${{ github.ref == 'refs/heads/main' }}
@@ -36,10 +40,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./public-gh-pages
-
-      - name: Build Hugo for Cloudflare Pages
-        run: |
-          hugo --minify --enableGitInfo --baseURL "https://www.qladgk.blog/ --destination ./public-cf-pages
 
       - name: Publish to Cloudflare Pages
         if: ${{ github.ref == 'refs/heads/main' }}
