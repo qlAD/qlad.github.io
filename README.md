@@ -2,7 +2,7 @@
 
 > 博客中大部分页面模板来自 [大大的小蜗牛](https://www.eallion.com/) 的博客。可以去原作者的 [仓库](https://github.com/eallion/eallion.com) 学习更多。
 
-![GitHub repo size](https://img.shields.io/github/repo-size/qlAD/Blog) ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/qlAD/Blog) ![GitHub commits since tagged version](https://img.shields.io/github/commits-since/qlAD/Blog/latest/main) ![GitHub last commit](https://img.shields.io/github/last-commit/qlAD/Blog) 
+![GitHub repo size](https://img.shields.io/github/repo-size/qlAD/qlad.github.io) ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/qlAD/qlad.github.io) ![GitHub commits since tagged version](https://img.shields.io/github/commits-since/qlAD/qlad.github.io/latest/main) ![GitHub last commit](https://img.shields.io/github/last-commit/qlAD/qlad.github.io) 
 
 ##### 本仓库用于存放个人博客的源代码，主要用于记录学习笔记、生活感悟、生活收获等内容。不定时更新，欢迎关注。每月 30 日自动将 content/blog 目录下的所有文章备份成 GitHub Release。
 
@@ -10,13 +10,13 @@
 
 #### 📖 博客介绍：
 
-- 博客地址：[https://www.qladgk.blog](https://www.qladgk.blog)
+- 博客地址：[https://qlad.github.io](https://qlad.github.io)
 - 博客引擎：[Hugo](https://gohugo.io/)
 - 博客主题：[Blowfish](https://blowfish.page/)
 
 #### 🚀 托管部署：
 
-- 博客仓库：[https://github.com/qlAD/Blog](https://github.com/qlAD/Blog)
+- 博客仓库：[https://github.com/qlAD/qlad.github.io](https://github.com/qlAD/qlad.github.io)
 - 博客部署:
 
   通过 GitHub Actions 自动部署到 Cloudflare Pages 和 GitHub Pages。~~然后通过自定义规则进行重定向。~~
@@ -32,7 +32,7 @@
 # 安装依赖
 sudo pacman -S hugo pnpm
 # 克隆仓库及子模块
-git clone --recurse-submodules https://github.com/qlAD/Blog BlogGithub/ && cd BlogGithub/
+git clone --recurse-submodules https://github.com/qlAD/qlad.github.io BlogGithub/ && cd BlogGithub/
 # 本地服务器启动
 pnpm install && pnpm run server
 ```
@@ -40,7 +40,7 @@ pnpm install && pnpm run server
 - 备份文章：GitHub Actions 自动备份 `content/blog` 目录下的所有文章到 Release。
 
 ```bash
-https://github.com/qlAD/Blog/blob/main/.github/workflows/monthly-blog-backup.yml
+https://github.com/qlAD/qlad.github.io/blob/main/.github/workflows/monthly-blog-backup.yml
 ```
 
 ```md
@@ -115,28 +115,28 @@ https://github.com/qlAD/Blog/blob/main/.github/workflows/monthly-blog-backup.yml
 
 - [Blowfish](https://blowfish.page/)：一款简洁、清新、响应式的 Hugo 主题
 
-- 自定义 CSS 在 `assets/css/` [https://github.com/qlAD/Blog/blob/main/assets/css/custom.css](https://github.com/qlAD/Blog/blob/main/assets/css/custom.css)：
+- 自定义 CSS 在 `assets/css/` [https://github.com/qlAD/qlad.github.io/blob/main/assets/css/custom.css](https://github.com/qlAD/qlad.github.io/blob/main/assets/css/custom.css)：
 
 ```bash
-https://github.com/qlAD/Blog/blob/main/assets/css/custom.css
+https://github.com/qlAD/qlad.github.io/blob/main/assets/css/custom.css
 ```
 
-- 自定义 JS 在 `assets/js/`： [https://github.com/qlAD/Blog/blob/main/assets/js/pangu.custom.js](https://github.com/qlAD/Blog/blob/main/assets/js/pangu.custom.js)：
+- 自定义 JS 在 `assets/js/`： [https://github.com/qlAD/qlad.github.io/blob/main/assets/js/pangu.custom.js](https://github.com/qlAD/qlad.github.io/blob/main/assets/js/pangu.custom.js)：
   
 ```bash
-https://github.com/qlAD/Blog/blob/main/assets/js/pangu.custom.js
+https://github.com/qlAD/qlad.github.io/blob/main/assets/js/pangu.custom.js
 ```
 
-- 自定义模板在 `layouts/_default`： [https://github.com/qlAD/Blog/blob/main/layouts/_default/mastodon.html](https://github.com/qlAD/Blog/blob/main/layouts/_default/mastodon.html)：
+- 自定义模板在 `layouts/_default`： [https://github.com/qlAD/qlad.github.io/blob/main/layouts/_default/mastodon.html](https://github.com/qlAD/qlad.github.io/blob/main/layouts/_default/mastodon.html)：
 
 ```bash
-https://github.com/qlAD/Blog/blob/main/layouts/_default/mastodon.html
+https://github.com/qlAD/qlad.github.io/blob/main/layouts/_default/mastodon.html
 ```
 
-- 页面数据在 `data`： [https://github.com/qlAD/Blog/blob/main/data/authors/qlAD.json](https://github.com/qlAD/Blog/blob/main/data/authors/qlAD.json)：
+- 页面数据在 `data`： [https://github.com/qlAD/qlad.github.io/blob/main/data/authors/qlAD.json](https://github.com/qlAD/qlad.github.io/blob/main/data/authors/qlAD.json)：
 
 ```bash
-https://github.com/qlAD/Blog/blob/main/data/authors/qlAD.json
+https://github.com/qlAD/qlad.github.io/blob/main/data/authors/qlAD.json
 ```
 
 #### 🎈 嘀咕页面
