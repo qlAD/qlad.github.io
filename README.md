@@ -19,10 +19,10 @@
 - 博客仓库：[https://github.com/qlAD/Blog](https://github.com/qlAD/Blog)
 - 博客部署:
 
-  通过 GitHub Actions 自动部署到 Cloudflare Pages 和 GitHub Pages。然后通过自定义规则进行重定向。
+  通过 GitHub Actions 自动部署到 Cloudflare Pages 和 GitHub Pages。~~然后通过自定义规则进行重定向。~~
 
-  - Cloudflare Pages: [https://www.qladgk.blog](https://www.qladgk.blog)
-  - Github Pages: [https://cn.qladgk.blog](https://cn.qladgk.blog)
+  - ~~Cloudflare Pages: [https://www.qladgk.blog](https://www.qladgk.blog)~~
+  - ~~Github Pages: [https://cn.qladgk.blog](https://cn.qladgk.blog)~~
 
 #### 📦 迁移备份：
 

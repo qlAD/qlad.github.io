@@ -3,9 +3,6 @@ name: Sync Mastodon Status
 on:
   #  schedule:
   #  - cron: "0 17 * * *"
-  #  watch:
-  #    types: [started]
-
   workflow_dispatch:
 
 jobs:
