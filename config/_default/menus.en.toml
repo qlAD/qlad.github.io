@@ -93,23 +93,23 @@
 #    pageRef = "milestone"
 #    weight = 40
 
-#  [[footer]]
-#    name = "Stats"
-#    pageRef = "stats"
-#    weight = 50
+ [[footer]]
+   name = "Stats"
+   pageRef = "stats"
+   weight = 50
 
 #  [[footer]]
 #    name = "Status"
 #    url = "https://stats.uptimerobot.com/LvmZRfkNGP"
 #    weight = 60
 
-#  [[footer]]
-#    name = "About"
-#    pageRef = "about"
-#    weight = 90
+ [[footer]]
+   name = "About"
+   pageRef = "about"
+   weight = 90
 
-#  [[footer]]
-#    pre = "rss"
-#    name = "RSS"
-#    url = "https://www.eallion.com/rss"
-#    weight = 99
+ [[footer]]
+   pre = "rss"
+   name = "RSS"
+   url = "https://qlad.github.io/index.xml"
+   weight = 99

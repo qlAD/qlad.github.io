@@ -111,5 +111,5 @@
  [[footer]]
    pre = "rss"
    name = "RSS"
-   url = "https://www.qladgk.blog/index.xml"
+   url = "https://qlad.github.io/index.xml"
    weight = 99
