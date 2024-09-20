@@ -12,9 +12,11 @@ draft: false
 date: "2024-01-12"
 ---
 
-原系列视频作者链接：[【从0开始的C++算法课】第02期 | 递推算法 | 经典题型解析 | 过河卒问题（递推算法求解）](https://www.bilibili.com/video/BV1FC4y1E7BD/)
+在 B 站上偶然看到了这个系列 “从 0 开始的 C++ 算法课” ，感觉很适合入门，于是就跟着视频学习记录了一下。
 
-{{< figure src="https://s2.loli.net/2024/01/12/KbSN5BrwUxaj7qs.png" >}}
+> 原系列视频作者链接[【从0开始的C++算法课】第02期 | 递推算法 | 经典题型解析 | 过河卒问题（递推算法求解）](https://www.bilibili.com/video/BV1FC4y1E7BD/)
+
+![](https://s2.loli.net/2024/01/12/KbSN5BrwUxaj7qs.png)
 
 要求：
 
@@ -38,7 +40,7 @@ date: "2024-01-12"
 
 分析可得，当 B 在中央时，路径条数总数是到达 B 所在位置上方和所在位置左方路径条数相加所得。想要知道到达上边或者左边的路径数就需要知道更上边或者更左边的路径数，可用递推表示。
 
-{{< figure src="https://s2.loli.net/2024/01/12/WfvSLD6r3mqyjoB.png" >}}
+![](https://s2.loli.net/2024/01/12/WfvSLD6r3mqyjoB.png)
 
 由于设计到坐标一般选择二维数组进行储值：数组名 [行数 n] [列数 m]
 
@@ -72,7 +74,7 @@ for (int i = 0; i <= n; i++)
 
 以上只完成了没有马的情况下到达 B 点的路径条数，还需将马所在的 C 点及马的控制点 P 筛选出来
 
-{{< figure src="https://s2.loli.net/2024/01/12/Q9wAX8uWL4PtdD6.png" >}}
+![](https://s2.loli.net/2024/01/12/Q9wAX8uWL4PtdD6.png)
 
 我们可提前将整个 B 点所在的表格中数组标记为 1 再将 C 点及 P 点数组的值标记为 0，需要注意
 
@@ -82,7 +84,7 @@ for (int i = 0; i <= n; i++)
 
 可用简单的 if 语句判断
 
-{{< figure src="https://s2.loli.net/2024/01/12/MU87jFmdqNwKZYe.png" >}}
+![](https://s2.loli.net/2024/01/12/MU87jFmdqNwKZYe.png)
 
 以及马的本身也为 0
 
@@ -187,4 +189,4 @@ int main()
 
 题目：使用递推求解
 
-{{< figure src="https://s2.loli.net/2024/01/12/LwhaoQ1543HuTtR.png" >}}
+![](https://s2.loli.net/2024/01/12/LwhaoQ1543HuTtR.png)

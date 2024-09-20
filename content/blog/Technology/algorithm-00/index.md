@@ -12,7 +12,9 @@ draft: false
 date: "2024-01-10"
 ---
 
-原系列视频作者链接：[【从0开始的C++算法课】第00期 | 环境搭建 & 递归 (一) | 基本数列递归](https://www.bilibili.com/video/BV1Bu4y1Y7ow/)
+在 B 站上偶然看到了这个系列 “从 0 开始的 C++ 算法课” ，感觉很适合入门，于是就跟着视频学习记录了一下。
+
+> 原系列视频作者链接[【从0开始的C++算法课】第00期 | 环境搭建 & 递归 (一) | 基本数列递归](https://www.bilibili.com/video/BV1Bu4y1Y7ow/)
 
 需求：使用递归方式求解等差数列 1 4 7 10 13 … 第 n 项的值，要求输入 n 输出第 n 项的值
 
@@ -20,11 +22,11 @@ date: "2024-01-10"
 
 然后我们调用这个函数本身求出 res 的值，若输入的参数为 6 则函数计算流程如下
 
-{{< figure src="https://s2.loli.net/2024/01/10/NiPxZW4KYCjRTLc.png" >}}
+![](https://s2.loli.net/2024/01/10/NiPxZW4KYCjRTLc.png)
 
 可以看到整个过程是依次往前计算，但是我们知道数列没有第 0 项，因此递归函数不能没有限制
 
-{{< figure src="https://s2.loli.net/2024/01/10/frJspkON4FL3YtE.png" >}}
+![](https://s2.loli.net/2024/01/10/frJspkON4FL3YtE.png)
 
 递归需要有起始项，避免无限制递归，因此需要手动设置 n = 1 时的 res 值
 
@@ -70,7 +72,7 @@ int main()
 
 作业
 
-{{< figure src="https://s2.loli.net/2024/01/10/xtQNJPzs7ywIChF.png" >}}
+![](https://s2.loli.net/2024/01/10/xtQNJPzs7ywIChF.png)
 
 题 1
 
@@ -103,7 +105,7 @@ int main()
 
 题 2
 
-```nil
+```c
 #include <stdio.h>
 
 int f(int n)

@@ -12,15 +12,17 @@ draft: false
 date: "2024-01-12"
 ---
 
-原系列视频作者链接：[【从0开始的C++算法课】第01期 | 递归(二) | 递归函数的缺陷 && 引出递推算法](https://www.bilibili.com/video/)
+在 B 站上偶然看到了这个系列 “从 0 开始的 C++ 算法课” ，感觉很适合入门，于是就跟着视频学习记录了一下。
+
+> 原系列视频作者链接[【从0开始的C++算法课】第01期 | 递归(二) | 递归函数的缺陷 && 引出递推算法](https://www.bilibili.com/video/)
 
 有一对兔子，从出生后的第三个月起，每个月都生一对兔子，一对兔子成长到第三个月后每个月有生一对兔子，假如兔子都不死，问第 n 个月的兔子总数是多少对？
 
-{{< figure src="https://s2.loli.net/2024/01/11/IkfVaEDWje2cRy6.png" >}}
+![](https://s2.loli.net/2024/01/11/IkfVaEDWje2cRy6.png)
 
 我们只关心每月的兔子对数，列出观察发现其实就是斐波那契数列
 
-{{< figure src="https://s2.loli.net/2024/01/11/mDyetXCY8VU3zcd.png" >}}
+![](https://s2.loli.net/2024/01/11/mDyetXCY8VU3zcd.png)
 
 可以使用递归函数来解决，但需注意这个函数应该有两个起始项
 
@@ -53,7 +55,7 @@ for (int i = 1; i <= 6; i++)
 
 我们以第 6 个月举例
 
-{{< figure src="https://s2.loli.net/2024/01/11/RGtHmanDsK81jVo.png" >}}
+![](https://s2.loli.net/2024/01/11/RGtHmanDsK81jVo.png)
 
 可以看到有很多项在被重复计算着，于是随着求解的项数越多，程序执行的效率也就越低，于是我们可以不使用递归，每一次只用计算一遍便可提升执行效率
 
@@ -84,7 +86,7 @@ for (int i = 1; i <= 50; i++)
 
 在墙角按照规律堆放着一些完全相同的正方体小块，只要知道层数就可以知道所有小块的数量
 
-{{< figure src="https://s2.loli.net/2024/01/11/V76G2w1Bl3qkJOo.png" >}}
+![](https://s2.loli.net/2024/01/11/V76G2w1Bl3qkJOo.png)
 
 这里的规律就是除第一层，每一层都比上一层多了层数个的小块，可用 for 循环实现，记得初始化 level 和 sum 的值
 
@@ -122,7 +124,7 @@ int main()
 
 关于递推的两道习题
 
-{{< figure src="https://s2.loli.net/2024/01/11/tknX3oZfglqxQA6.png" >}}
+![](https://s2.loli.net/2024/01/11/tknX3oZfglqxQA6.png)
 
 题 1
 
