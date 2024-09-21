@@ -5,7 +5,7 @@ categories: ["技术"]
 tags: ["计算机专业", "Linux"]
 slug: "cs_04"
 summary: "本文介绍 Linux 简介、优点、版本、文件系统、SSH 连接、习题。"
-series: ["CS"]
+series: ["计算机基础"]
 series_weight: 4
 seriesNavigation: true
 draft: false

@@ -5,7 +5,7 @@ categories: ["技术"]
 tags: ["计算机专业"]
 slug: "cs_03"
 summary: "本文介绍计算机系统的组成及其发展历史。"
-series: ["CS"]
+series: ["计算机基础"]
 series_weight: 3
 seriesNavigation: true
 draft: false

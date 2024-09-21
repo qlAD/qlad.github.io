@@ -5,7 +5,7 @@ categories: ["技术"]
 tags: ["C/C++", "编程", "计算机专业"]
 slug: "cs-06"
 summary: "本文介绍了编程语言的核心概念，包括变量、数据类型、控制结构、函数、操作符、输入/输出、错误处理、注释、作用域、模块化等。"
-series: ["CS"]
+series: ["计算机基础"]
 series_weight: 6
 seriesNavigation: true
 draft: false

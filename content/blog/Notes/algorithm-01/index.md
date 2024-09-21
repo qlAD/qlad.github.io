@@ -1,11 +1,11 @@
 ---
 title: "第01期 | 递归(二) | 递归函数的缺陷 && 引出递推算法"
 authors: ["qlAD"]
-categories: ["技术"]
+categories: ["笔记"]
 tags: ["C/C++", "编程", "算法"]
 slug: "algorithm_01"
 summary: "本篇文章主要介绍递归函数的缺陷，引出递推算法，并用 for 循环和数组来求解斐波那契数列和分数求和。"
-series: ["Algorithm"]
+series: ["算法·B站"]
 series_weight: 2
 seriesNavigation: true
 draft: false

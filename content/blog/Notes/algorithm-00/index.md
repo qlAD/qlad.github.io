@@ -1,11 +1,11 @@
 ---
 title: "第00期 | 环境搭建 & 递归 (一) | 基本数列递归"
 authors: ["qlAD"]
-categories: ["技术"]
+categories: ["笔记"]
 tags: ["C/C++", "编程", "算法"]
 slug: "algorithm_00"
 summary: "本篇文章介绍了环境搭建、递归的基本概念、基本数列递归的求解方法。"
-series: ["Algorithm"]
+series: ["算法·B站"]
 series_weight: 1
 seriesNavigation: true
 draft: false

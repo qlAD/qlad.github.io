@@ -5,7 +5,7 @@ categories: ["技术"]
 tags: ["C/C++", "编程", "计算机专业"]
 slug: "cs-07"
 summary: "这篇文章介绍了 C 语言的基本语法，包括变量声明、控制结构和函数定义等内容，适合初学者学习和参考。"
-series: ["CS"]
+series: ["计算机基础"]
 series_weight: 7
 seriesNavigation: true
 draft: false

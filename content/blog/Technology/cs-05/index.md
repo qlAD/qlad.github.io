@@ -5,7 +5,7 @@ categories: ["技术"]
 tags: ["C/C++", "编程", "计算机专业"]
 slug: "cs-05"
 summary: "本文将从零基础的角度来探索编程的本质，了解其背后的逻辑和思维方式。"
-series: ["CS"]
+series: ["计算机基础"]
 series_weight: 5
 seriesNavigation: true
 draft: false

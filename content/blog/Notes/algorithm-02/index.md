@@ -1,11 +1,11 @@
 ---
 title: "第02期 | 递推算法 | 经典题型解析 | 过河卒问题（递推算法求解）"
 authors: ["qlAD"]
-categories: ["技术"]
+categories: ["笔记"]
 tags: ["C/C++", "编程", "算法"]
 slug: "algorithm_02"
 summary: "本篇文章将介绍递推算法的基本概念，经典题型解析，以及过河卒问题的递推算法求解。"
-series: ["Algorithm"]
+series: ["算法·B站"]
 series_weight: 3
 seriesNavigation: true
 draft: false
