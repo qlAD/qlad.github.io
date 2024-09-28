@@ -24,6 +24,10 @@ jobs:
         with:
           hugo-version: "latest"
           extended: true
+      
+      - name: Build Hugo for Aliyun OSS
+        run: |
+          hugo --minify --enableGitInfo --baseURL "https://qladgk.com/" --destination ./public-aliyun-oss
 
       - name: Build Hugo for GitHub Pages
         run: |
@@ -49,3 +53,14 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           quiet: true
           command: pages deploy ./public-cf-pages --project-name=${{ secrets.CLOUDFLARE_PROJECT_NAME }} --commit-dirty=true
+
+      - name: Deploy to Aliyun OSS
+        uses: docker://fangbinwei/aliyun-oss-website-action:v1
+        env:
+          ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
+          ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
+          BUCKET: qladgk-com
+          ENDPOINT: oss-cn-hongkong.aliyuncs.com
+          FOLDER: public-aliyun-oss
+          SKIP_SETTING: true
+          INCREMENTAL: true
