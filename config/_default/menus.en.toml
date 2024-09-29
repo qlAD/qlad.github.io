@@ -25,6 +25,11 @@
   pageRef = "stats"
   weight = 12
 
+[[main]]
+  name = "Music"
+  pageRef = "music"
+  weight = 13
+
 # [[main]]
 #   name = "Friends"
 #   pageRef = "links"

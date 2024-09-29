@@ -25,6 +25,11 @@
   pageRef = "stats"
   weight = 12
 
+[[main]]
+  name = "歌单"
+  pageRef = "music"
+  weight = 13
+
 # [[main]]
 #   name = "友情链接"
 #   pageRef = "links"

@@ -2,7 +2,7 @@ disabled = false
 languageCode = "en"
 languageName = "English"
 weight = 2
-title = "qlAD's Blog"
+title = "qlAD's Technical Notes"
 
 [params]
   displayName = "English"
@@ -11,8 +11,8 @@ title = "qlAD's Blog"
   dateFormat = "2 January 2006"
   # logo = "img/logo.png"
   # secondaryLogo = "img/secondary-logo.png"
-  # description = "My awesome website"
-  # copyright = "Copy, _right?_ :thinking_face:"
+  description = "The hacker mindset combined with an open and collaborative attitude is the key to growth and overcoming challenges!"
+  copyright = "© 2020 - { year } <span class='inline-block'><a href='/copyright/' target='_blank'>qlAD</a> All Rights Reserved </span>. "# <span class='inline-block'><a href='https://beian.miit.gov.cn/' target='_blank'>浙ICP备16031768号-2</a></span>"
 
 [params.author]
   name = "qlAD"

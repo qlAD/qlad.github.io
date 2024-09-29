@@ -2,7 +2,7 @@ disabled = false
 languageCode = "zh-cn"
 languageName = "简体中文"
 weight = 1
-title = "qlAD 的博客"
+title = "qlAD 的技术笔记"
 
 [params]
   displayName = "简体中文"
@@ -11,8 +11,9 @@ title = "qlAD 的博客"
   dateFormat = "2 January 2006"
   # logo = "img/logo.png"
   # secondaryLogo = "img/secondary-logo.png"
-  # description = "My awesome website"
-  # copyright = "Copy, _right?_ :thinking_face:"
+  description = "做技术的黑客心态加上开放共进的态度是成长和越过高山幽谷的秘籍！"
+  copyright = "© 2020 - { year } <span class='inline-block'><a href='/copyright/' target='_blank'>qlAD</a> 版权所有 </span>. "# <span class='inline-block'><a href='https://beian.miit.gov.cn/' target='_blank'>浙ICP备16031768号-2</a></span>"
+
 
 [params.author]
   name = "qlAD"
