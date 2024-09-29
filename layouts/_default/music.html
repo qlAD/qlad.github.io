@@ -1,0 +1,75 @@
+{{ define "main" }}
+{{ .Scratch.Set "scope" "single" }}
+
+<!-- require APlayer -->
+
+{{ $APlayerCss := resources.Get "css/APlayer.min.css" | minify | fingerprint "sha256" }}
+<link rel="stylesheet" href="{{ $APlayerCss.RelPermalink }}" integrity="{{ $APlayerCss.Data.Integrity }}" crossorigin="anonymous">
+
+{{ $APlayerJs := resources.Get "js/APlayer.min.js" | minify | fingerprint "sha256" }}
+{{ $MetingJs := resources.Get "js/Meting.min.js" | minify | fingerprint "sha256" }}
+
+<script src="{{ $APlayerJs.RelPermalink }}" integrity="{{ $APlayerJs.Data.Integrity }}" crossorigin="anonymous"></script>
+<script src="{{ $MetingJs.RelPermalink }}" integrity="{{ $MetingJs.Data.Integrity }}" crossorigin="anonymous"></script>
+
+
+<article>
+  {{ if .Params.showHero | default (.Site.Params.article.showHero | default false) }}
+  {{ $heroStyle := .Params.heroStyle }}
+  {{ if not $heroStyle }}{{ $heroStyle = .Site.Params.article.heroStyle }}{{ end }}
+  {{ $heroStyle := print "partials/hero/" $heroStyle ".html" }}
+  {{ if templates.Exists $heroStyle }}
+  {{ partial $heroStyle . }}
+  {{ else }}
+  {{ partial "partials/hero/basic.html" . }}
+  {{ end }}
+  {{ end }}
+
+  <header id="single_header" class="mt-5 max-w-prose">
+    {{ if .Params.showBreadcrumbs | default (.Site.Params.article.showBreadcrumbs | default false) }}
+    {{ partial "breadcrumbs.html" . }}
+    {{ end }}
+    <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+      {{ .Title }}
+    </h1>
+    <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+      {{ partial "article-meta/basic.html" (dict "context" . "scope" "single") }}
+    </div>
+
+  </header>
+
+  <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+
+    <div class="min-w-0 min-h-0 max-w-fit">
+        <div class="article-content max-w-prose mb-20">
+            {{ .Content }}
+        </div>
+    </div>
+
+  </section>
+
+</article>
+
+<a href="https://music.163.com/#/my/m/music/playlist?id=2919496226" style="color: #60A5FA; padding-left: 5px;">我喜欢的音乐</a>
+
+<meting-js server="netease" type="playlist" id="2919496226" autoplay="true"></meting-js>
+
+<br>
+
+<a href="https://music.163.com/#/my/m/music/playlist?id=443797814" style="color: #60A5FA; padding-left: 5px;">超好听の二次元日文歌</a>
+
+<meting-js server="netease" type="playlist" id="443797814"></meting-js>
+
+<br>
+
+<a href="https://music.163.com/#/my/m/music/playlist?id=2935828689" style="color: #60A5FA; padding-left: 5px;">Billie Eilish: Complete Collection</a>
+
+<meting-js server="netease" type="playlist" id="2935828689"></meting-js>
+
+<br>
+
+<a href="https://music.163.com/#/my/m/music/playlist?id=331841455" style="color: #60A5FA; padding-left: 5px;">深度睡眠 |重度失眠者专用歌单</a>
+
+<meting-js server="netease" type="playlist" id="331841455"></meting-js>
+
+{{- end -}}
