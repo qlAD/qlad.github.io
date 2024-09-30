@@ -21,4 +21,4 @@ aliases:
     - /en/gedan
 ---
 
-> Here are some of my favorite playlists, welcome to save them! Click the play button or song name to play it online, except for some VIP songs.
+> Here are some of my favorite playlists, welcome to save them!

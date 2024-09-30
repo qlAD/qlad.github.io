@@ -8,6 +8,16 @@
     /* --webchat-toolbar-background-color: #1e40af !important; */
 }
 
+@font-face {
+    font-family: LXGWWenKai;
+    src: url('/assets/fonts/lxgw-wenkai-v1.500/LXGWWenKai-Regular.ttf');
+}
+
+html {
+    font-family: LXGWWenKai;
+    font-size: 13pt;
+}
+
 html.dark .shiki,
 html.dark .shiki span {
     color: var(--shiki-dark) !important;
