@@ -21,26 +21,25 @@
   weight = 11
 
 [[main]]
+  name = "Tools"
+  pageRef = "tools"
+  weight = 12
+
+
+[[main]]
   name = "Music"
   pageRef = "music"
-  weight = 12
+  weight = 13
 
 [[main]]
   name = "Treasure"
   pageRef = "treasure"
-  weight = 13
+  weight = 14
 
 [[main]]
   name = "Stats"
   pageRef = "stats"
-  weight = 14
-
-
-
-# [[main]]
-#   name = "Friends"
-#   pageRef = "links"
-#   weight = 13
+  weight = 15
 
 [[main]]
   name = "More"
@@ -69,6 +68,11 @@
   parent = "More"
   pageRef = "tags"
   weight = 24
+
+[[main]]
+  name = "Friends"
+  pageRef = "friends"
+  weight = 30
 
 [[main]]
   name = "About"

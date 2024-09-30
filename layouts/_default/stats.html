@@ -98,9 +98,21 @@
         {{ .Title }}
         </h1>
 
-        <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
-        {{ partial "article-meta/basic.html" (dict "context" . "scope" "single") }}
-        </div>
+        <div class="mt-1 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+            {{ partial "article-meta/basic.html" (dict "context" . "scope" "single") }}
+          </div>
+      
+        </header>
+  
+        <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+  
+          <div class="min-w-0 min-h-0 max-w-fit">
+    
+            <div class="article-content max-w-full ">
+              {{ .Content }}
+            </div>
+          </div>
+        </section>  
 
         {{ $authorsData := .Site.Data.authors }}
         {{ $taxonomies := .Site.Taxonomies.authors }}
@@ -832,7 +844,6 @@
                     {{- end -}}
                 </div>
 
-                {{ .Content }}
             </div>
 
             {{ if (.Params.showAuthorBottom | default ( .Site.Params.article.showAuthorBottom | default false)) }}

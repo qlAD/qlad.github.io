@@ -22,4 +22,4 @@ aliases:
     - /en/tongji
 ---
 
-Ref<sup>1</sup>: The same article may contain multiple categories.
+> This is the blog statistics page, which displays the blog's visits, number of comments, category statistics, tag statistics, archive statistics and other information.

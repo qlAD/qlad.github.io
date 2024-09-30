@@ -1,6 +1,6 @@
 ---
-title: "Treasure"
-layout: "treasure"
+title: "Tools"
+layout: "tools"
 type: "sample"
 showDate: false
 showAuthor: false
@@ -17,10 +17,8 @@ showComments: false
 sharingLinks: false
 showZenMode: false
 aliases:
-    - /en/douban
-    - /en/movies
-    - /en/film
-    - /en/movie
+- /tool
+- /gongju
 ---
 
-> Here is my [NeoDB](https://neodb.social/users/qlAD/) book, movie, and music tag record. Every book, movie, and music is a short escape that takes us into different time, space, culture, and emotions.
+> The rapid development of science and technology is reshaping our lifestyle, and tools are the tools that drive this change. Welcome to my toolbox, where the power to change the world is gathered!

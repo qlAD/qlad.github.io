@@ -1,0 +1,494 @@
+[
+  {
+    "title": "Baidu",
+    "description": "中国最大的搜索引擎。",
+    "url": "https://www.baidu.com",
+    "category": "搜索引擎"
+  },
+  {
+    "title": "Google",
+    "description": "世界最大的搜索引擎。",
+    "url": "https://www.google.com",
+    "category": "搜索引擎"
+  },
+  {
+    "title": "DuckDuckGo",
+    "description": "隐私保护的搜索引擎。",
+    "url": "https://www.duckduckgo.com",
+    "category": "搜索引擎"
+  },
+  {
+    "title": "JD.com",
+    "description": "中国领先的电子商务公司之一。",
+    "url": "https://www.jd.com",
+    "category": "电商"
+  },
+  {
+    "title": "Taobao",
+    "description": "中国最大的C2C在线零售平台。",
+    "url": "https://www.taobao.com",
+    "category": "电商"
+  },
+  {
+    "title": "Tencent Cloud",
+    "description": "腾讯云，提供云服务和在线服务。",
+    "url": "https://cloud.tencent.com",
+    "category": "云服务"
+  },
+  {
+    "title": "Alibaba Cloud",
+    "description": "阿里云，提供云计算服务。",
+    "url": "https://www.alibabacloud.com",
+    "category": "云服务"
+  },
+  {
+    "title": "AWS",
+    "description": "Amazon Web Services，提供云计算服务。",
+    "url": "https://aws.amazon.com",
+    "category": "云服务"
+  },
+  {
+    "title": "Sina Weibo",
+    "description": "中国领先的社交媒体平台。",
+    "url": "https://www.weibo.com",
+    "category": "社交平台"
+  },
+  {
+    "title": "Douban",
+    "description": "提供书籍、电影、音乐推荐和评论的网站。",
+    "url": "https://www.douban.com",
+    "category": "文化娱乐"
+  },
+  {
+    "title": "Zhihu",
+    "description": "中国领先的问答社区。",
+    "url": "https://www.zhihu.com",
+    "category": "知识分享"
+  },
+  {
+    "title": "Xiaomi",
+    "description": "小米公司官方网站，提供智能硬件和电子产品。",
+    "url": "https://www.mi.com",
+    "category": "电子产品"
+  },
+  {
+    "title": "Huawei",
+    "description": "华为公司官方网站，提供通信设备和消费电子产品。",
+    "url": "https://www.huawei.com",
+    "category": "电子产品"
+  },
+  {
+    "title": "Bilibili",
+    "description": "提供动画、漫画和游戏相关内容的视频分享网站。",
+    "url": "https://www.bilibili.com",
+    "category": "视频分享"
+  },
+  {
+    "title": "iQIYI",
+    "description": "提供电影、电视剧、动漫、综艺等视频内容的在线视频网站。",
+    "url": "https://www.iqiyi.com",
+    "category": "视频分享"
+  },
+  {
+    "title": "Youku",
+    "description": "优酷，提供视频分享和视频播放服务的网站。",
+    "url": "https://www.youku.com",
+    "category": "视频分享"
+  },
+  {
+    "title": "V2EX",
+    "description": "关于分享和探索的地方，创意工作者们的社区。",
+    "url": "https://www.v2ex.com",
+    "category": "技术社区"
+  },
+  {
+    "title": "CSDN",
+    "description": "中国专业IT社区和服务平台。",
+    "url": "https://www.csdn.net",
+    "category": "技术社区"
+  },
+  {
+    "title": "掘金",
+    "description": "帮助开发者成长的技术社区。",
+    "url": "https://juejin.cn",
+    "category": "技术社区"
+  },
+  {
+    "title": "SegmentFault",
+    "description": "开发者社区和问答平台。",
+    "url": "https://segmentfault.com",
+    "category": "技术社区"
+  },
+  {
+    "title": "OSChina",
+    "description": "开源中国社区，提供软件信息和开发资源。",
+    "url": "https://www.oschina.net",
+    "category": "技术社区"
+  },
+  {
+    "title": "LeetCode",
+    "description": "在线编程题库和在线编程学习平台。",
+    "url": "https://leetcode.com",
+    "category": "在线教育"
+  },
+  {
+    "title": "Codecademy",
+    "description": "在线学习编程的网站。",
+    "url": "https://www.codecademy.com",
+    "category": "在线教育"
+  },
+  {
+    "title": "Udemy",
+    "description": "提供在线学习课程的平台。",
+    "url": "https://www.udemy.com",
+    "category": "在线教育"
+  },
+  {
+    "title": "TED",
+    "description": "传播有价值的想法的非营利组织。",
+    "url": "https://www.ted.com",
+    "category": "知识分享"
+  },
+  {
+    "title": "Medium",
+    "description": "在线出版平台，用户可以发布文章和博客。",
+    "url": "https://medium.com",
+    "category": "知识分享"
+  },
+  {
+    "title": "IFTTT",
+    "description": "连接不同网络服务和设备的自动化平台。",
+    "url": "https://www.ifttt.com",
+    "category": "生产力工具"
+  },
+  {
+    "title": "Zapier",
+    "description": "自动化工作流程的在线服务。",
+    "url": "https://www.zapier.com",
+    "category": "生产力工具"
+  },
+  {
+    "title": "Evernote",
+    "description": "笔记和任务管理应用。",
+    "url": "https://www.evernote.com",
+    "category": "生产力工具"
+  },
+  {
+    "title": "Pocket",
+    "description": "稍后阅读服务，允许用户保存网页和文章。",
+    "url": "https://getpocket.com",
+    "category": "生产力工具"
+  },
+  {
+    "title": "Airtable",
+    "description": "电子表格和数据库的混合体，支持协作。",
+    "url": "https://airtable.com",
+    "category": "生产力工具"
+  },
+  {
+    "title": "Lark",
+    "description": "飞书，企业级办公协作平台。",
+    "url": "https://www.larksuite.com",
+    "category": "生产力工具"
+  },
+  {
+    "title": "Teambition",
+    "description": "团队协作工具，提供项目管理和任务跟踪。",
+    "url": "https://www.teambition.com",
+    "category": "生产力工具"
+  },
+  {
+    "title": "ProcessOn",
+    "description": "在线作图工具，支持流程图、思维导图等。",
+    "url": "https://www.processon.com",
+    "category": "设计工具"
+  },
+  {
+    "title": "墨刀",
+    "description": "在线原型设计工具。",
+    "url": "https://modao.cc",
+    "category": "设计工具"
+  },
+  {
+    "title": "Sketch",
+    "description": "矢量设计工具，适用于网站、移动应用设计。",
+    "url": "https://www.sketch.com",
+    "category": "设计工具"
+  },
+  {
+    "title": "Adobe XD",
+    "description": "UI/UX设计和原型设计工具。",
+    "url": "https://www.adobe.com/products/xd.html",
+    "category": "设计工具"
+  },
+  {
+    "title": "InVision",
+    "description": "数字产品设计和协作平台。",
+    "url": "https://www.invisionapp.com",
+    "category": "设计工具"
+  },
+  {
+    "title": "Behance",
+    "description": "设计师展示和探索创意作品的平台。",
+    "url": "https://www.behance.net",
+    "category": "设计社区"
+  },
+  {
+    "title": "Dribbble",
+    "description": "设计师分享他们的作品和获取反馈的社区。",
+    "url": "https://dribbble.com",
+    "category": "设计社区"
+  },
+  {
+    "title": "Unsplash",
+    "description": "提供高分辨率照片的网站。",
+    "url": "https://unsplash.com",
+    "category": "图片资源"
+  },
+  {
+    "title": "Pexels",
+    "description": "提供免费的高质量照片和视频。",
+    "url": "https://www.pexels.com",
+    "category": "图片资源"
+  },
+  {
+    "title": "Shutterstock",
+    "description": "提供高质量图片、视频、音乐和编辑素材。",
+    "url": "https://www.shutterstock.com",
+    "category": "图片资源"
+  },
+  {
+    "title": "500px",
+    "description": "摄影师社区和照片市场。",
+    "url": "https://500px.com",
+    "category": "图片资源"
+  },
+  {
+    "title": "Envato Market",
+    "description": "提供各种数字资产和创意资源。",
+    "url": "https://market.envato.com",
+    "category": "设计资源"
+  },
+  {
+    "title": "DaVinci Resolve",
+    "description": "视频编辑软件，提供专业级的颜色校正和视觉效果工具。",
+    "url": "https://www.blackmagicdesign.com/products/davinciresolve/",
+    "category": "视频编辑"
+  },
+  {
+    "title": "Adobe Premiere Pro",
+    "description": "流行的视频编辑软件。",
+    "url": "https://www.adobe.com/products/premiere.html",
+    "category": "视频编辑"
+  },
+  {
+    "title": "Final Cut Pro X",
+    "description": "苹果公司开发的视频编辑软件。",
+    "url": "https://www.apple.com/final-cut-pro/",
+    "category": "视频编辑"
+  },
+  {
+    "title": "WordPress",
+    "description": "内容管理系统和博客平台。",
+    "url": "https://wordpress.org",
+    "category": "网站构建"
+  },
+  {
+    "title": "Wix",
+    "description": "用户友好的网站构建平台。",
+    "url": "https://www.wix.com",
+    "category": "网站构建"
+  },
+  {
+    "title": "Squarespace",
+    "description": "提供网站构建和托管服务。",
+    "url": "https://www.squarespace.com",
+    "category": "网站构建"
+  },
+  {
+    "title": "Shopify",
+    "description": "电子商务平台，提供在线商店构建工具。",
+    "url": "https://www.shopify.com",
+    "category": "电商"
+  },
+  {
+    "title": "BigCommerce",
+    "description": "电子商务平台，提供在线商店构建工具。",
+    "url": "https://www.bigcommerce.com",
+    "category": "电商"
+  },
+  {
+    "title": "Mailchimp",
+    "description": "电子邮件营销服务和自动化平台。",
+    "url": "https://mailchimp.com",
+    "category": "营销工具"
+  },
+  {
+    "title": "HubSpot",
+    "description": "提供营销、销售和服务软件。",
+    "url": "https://www.hubspot.com",
+    "category": "营销工具"
+  },
+  {
+    "title": "SEMrush",
+    "description": "提供SEO和在线营销工具。",
+    "url": "https://www.semrush.com",
+    "category": "营销工具"
+  },
+  {
+    "title": "Ahrefs",
+    "description": "提供SEO工具和网站分析服务。",
+    "url": "https://ahrefs.com",
+    "category": "营销工具"
+  },
+  {
+    "title": "Google Analytics",
+    "description": "网站流量分析工具。",
+    "url": "https://analytics.google.com",
+    "category": "分析工具"
+  },
+  {
+    "title": "Mixpanel",
+    "description": "产品分析平台，提供用户行为分析。",
+    "url": "https://mixpanel.com",
+    "category": "分析工具"
+  },
+  {
+    "title": "Tableau",
+    "description": "数据可视化工具。",
+    "url": "https://www.tableau.com",
+    "category": "数据可视化"
+  },
+  {
+    "title": "Microsoft Power BI",
+    "description": "商业分析服务，提供数据可视化功能。",
+    "url": "https://powerbi.microsoft.com",
+    "category": "数据可视化"
+  },
+  {
+    "title": "Datawrapper",
+    "description": "在线数据可视化工具。",
+    "url": "https://www.datawrapper.de",
+    "category": "数据可视化"
+  },
+  {
+    "title": "Canva",
+    "description": "在线图形设计平台。",
+    "url": "https://www.canva.com",
+    "category": "设计工具"
+  },
+  {
+    "title": "Gravit Designer",
+    "description": "免费的矢量设计工具。",
+    "url": "https://www.gravit.io designer",
+    "category": "设计工具"
+  },
+  {
+    "title": "Vectr",
+    "description": "简单易用的免费图形设计工具。",
+    "url": "https://vectr.com",
+    "category": "设计工具"
+  },
+  {
+    "title": "Webflow",
+    "description": "视觉网站构建工具。",
+    "url": "https://webflow.com",
+    "category": "网站构建"
+  },
+  {
+    "title": "Bootstrap",
+    "description": "前端开发框架，用于设计响应式网站。",
+    "url": "https://getbootstrap.com",
+    "category": "前端开发"
+  },
+  {
+    "title": "jQuery",
+    "description": "快速、小巧、功能丰富的JavaScript库。",
+    "url": "https://jquery.com",
+    "category": "前端开发"
+  },
+  {
+    "title": "Vue.js",
+    "description": "构建用户界面的渐进式JavaScript框架。",
+    "url": "https://vuejs.org",
+    "category": "前端开发"
+  },
+  {
+    "title": "React",
+    "description": "用于构建用户界面的JavaScript库。",
+    "url": "https://reactjs.org",
+    "category": "前端开发"
+  },
+  {
+    "title": "Angular",
+    "description": "平台和框架，用于构建客户端应用程序。",
+    "url": "https://angular.io",
+    "category": "前端开发"
+  },
+  {
+    "title": "Node.js",
+    "description": "基于Chrome V8引擎的JavaScript运行环境。",
+    "url": "https://nodejs.org",
+    "category": "后端开发"
+  },
+  {
+    "title": "Docker",
+    "description": "开放平台，用于开发、交付和运行应用程序。",
+    "url": "https://www.docker.com",
+    "category": "开发工具"
+  },
+  {
+    "title": "Kubernetes",
+    "description": "自动化部署、扩展和管理容器化应用程序的平台。",
+    "url": "https://kubernetes.io",
+    "category": "开发工具"
+  },
+  {
+    "title": "Git",
+    "description": "分布式版本控制系统。",
+    "url": "https://git-scm.com",
+    "category": "开发工具"
+  },
+  {
+    "title": "Jira",
+    "description": "项目与问题跟踪工具。",
+    "url": "https://www.atlassian.com/software/jira",
+    "category": "生产力工具"
+  },
+  {
+    "title": "Confluence",
+    "description": "团队协作软件，用于知识管理和信息共享。",
+    "url": "https://www.atlassian.com/software/confluence",
+    "category": "生产力工具"
+  },
+  {
+    "title": "Trello",
+    "description": "项目管理和协作工具。",
+    "url": "https://trello.com",
+    "category": "生产力工具"
+  },
+  {
+    "title": "Asana",
+    "description": "团队协作和项目管理工具。",
+    "url": "https://asana.com",
+    "category": "生产力工具"
+  },
+  {
+    "title": "Monday.com",
+    "description": "团队协作和项目管理工具。",
+    "url": "https://monday.com",
+    "category": "生产力工具"
+  },
+  {
+    "title": "ClickUp",
+    "description": "项目管理、生产力和文档工具。",
+    "url": "https://clickup.com",
+    "category": "生产力工具"
+  },
+  {
+    "title": "Toggl",
+    "description": "时间跟踪和团队协作工具。",
+    "url": "https://toggl.com",
+    "category": "生产力工具"
+  }
+]

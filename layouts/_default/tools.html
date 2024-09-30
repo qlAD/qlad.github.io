@@ -1,0 +1,74 @@
+{{ define "main" }}
+<article>
+    {{ if .Params.showHero | default (.Site.Params.article.showHero | default false) }}
+    {{ $heroStyle := .Params.heroStyle }}
+    {{ if not $heroStyle }}{{ $heroStyle = .Site.Params.article.heroStyle }}{{ end }}
+    {{ $heroStyle := print "partials/hero/" $heroStyle ".html" }}
+    {{ if templates.Exists $heroStyle }}
+    {{ partial $heroStyle . }}
+    {{ else }}
+    {{ partial "partials/hero/basic.html" . }}
+    {{ end }}
+    {{ end }}
+  
+    <header id="single_header" class="mt-5 max-w-prose">
+        {{ if .Params.showBreadcrumbs | default (.Site.Params.article.showBreadcrumbs | default false) }}
+        {{ partial "breadcrumbs.html" . }}
+        {{ end }}
+        <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+          {{ .Title }}
+        </h1>
+        <div class="mt-1 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+          {{ partial "article-meta/basic.html" (dict "context" . "scope" "single") }}
+        </div>
+    
+      </header>
+
+      <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+
+        <div class="min-w-0 min-h-0 max-w-fit">
+  
+          <div class="article-content max-w-full mb-10">
+            {{ .Content }}
+          </div>
+        </div>
+      </section>    
+
+  <!-- 读取 /assets/data/tools/links.json -->
+  {{ $linksResource := resources.Get "data/tools/links.json" }}
+  {{ $links := $linksResource | transform.Unmarshal }}
+
+  <!-- 获取所有分类 -->
+  {{ $categories := slice }}
+  {{ range $links }}
+    {{ if not (in $categories .category) }}
+      {{ $categories = $categories | append .category }}
+    {{ end }}
+  {{ end }}
+
+<!-- 按分类展示 -->
+{{ range $category := $categories }}
+  <section class="mb-10">
+    <h2 class="text-xl mb-4">{{ $category }}</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {{ range $links }}
+        {{ if eq .category $category }}
+          <a href="{{ .url }}" target="_blank" class="card bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105">
+            <div class="flex items-center p-4">
+              <!-- 自动获取 URL 的 favicon -->
+              <img src="https://api.faviconkit.com/{{ .url | replaceRE `^https?://` `` }}/64" alt="{{ .title }} Logo" class="w-12 h-12 mr-4">
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{{ .title }}</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">{{ .description }}</p>
+              </div>
+            </div>
+          </a>
+        {{ end }}
+      {{ end }}
+    </div>
+  </section>
+{{ end }}
+
+
+</article>
+{{ end }}
