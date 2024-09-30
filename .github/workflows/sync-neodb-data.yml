@@ -213,7 +213,7 @@ jobs:
       if: ${{ env.REMOTE_UUID != env.CURRENT_UUID }}
       uses: peter-evans/repository-dispatch@v3
       with:
-          event-type: build-hugo
+          event-type: build-deploy
 
     # # 同步新海报到 s3
     # - name: Sync Cover to static s3

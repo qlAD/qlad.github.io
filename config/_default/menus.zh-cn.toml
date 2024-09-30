@@ -27,7 +27,7 @@
 
 [[main]]
   name = "藏宝阁"
-  pageRef = "media"
+  pageRef = "treasure"
   weight = 13
 
 [[main]]
