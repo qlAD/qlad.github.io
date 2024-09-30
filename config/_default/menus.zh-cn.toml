@@ -21,14 +21,21 @@
   weight = 11
 
 [[main]]
-  name = "统计"
-  pageRef = "stats"
+  name = "歌单"
+  pageRef = "music"
   weight = 12
 
 [[main]]
-  name = "歌单"
-  pageRef = "music"
+  name = "藏宝阁"
+  pageRef = "media"
   weight = 13
+
+[[main]]
+  name = "统计"
+  pageRef = "stats"
+  weight = 14
+
+
 
 # [[main]]
 #   name = "友情链接"

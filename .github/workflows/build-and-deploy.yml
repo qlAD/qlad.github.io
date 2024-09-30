@@ -25,17 +25,17 @@ jobs:
           hugo-version: "latest"
           extended: true
       
-      - name: Build Hugo for Aliyun OSS
-        run: |
-          hugo --minify --enableGitInfo --baseURL "https://www.qladgk.com/" --destination ./public-aliyun-oss
+      # - name: Build Hugo for Aliyun OSS
+      #   run: |
+      #     hugo --minify --enableGitInfo --baseURL "https://www.qladgk.com/" --destination ./public-aliyun-oss
 
       - name: Build Hugo for GitHub Pages
         run: |
           hugo --minify --enableGitInfo --baseURL "https://qlad.github.io/" --destination ./public-gh-pages
 
-      - name: Build Hugo for Cloudflare Pages
-        run: |
-          hugo --minify --enableGitInfo --baseURL "https://qladgk.pages.dev/" --destination ./public-cf-pages
+      # - name: Build Hugo for Cloudflare Pages
+      #   run: |
+      #     hugo --minify --enableGitInfo --baseURL "https://qladgk.pages.dev/" --destination ./public-cf-pages
 
       - name: Publish Site to gh-pages
         uses: peaceiris/actions-gh-pages@v4
@@ -45,22 +45,22 @@ jobs:
           publish_branch: gh-pages
           publish_dir: ./public-gh-pages
 
-      - name: Publish to Cloudflare Pages
-        if: ${{ github.ref == 'refs/heads/main' }}
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          quiet: true
-          command: pages deploy ./public-cf-pages --project-name=${{ secrets.CLOUDFLARE_PROJECT_NAME }} --commit-dirty=true
+      # - name: Publish to Cloudflare Pages
+      #   if: ${{ github.ref == 'refs/heads/main' }}
+      #   uses: cloudflare/wrangler-action@v3
+      #   with:
+      #     apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      #     accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      #     quiet: true
+      #     command: pages deploy ./public-cf-pages --project-name=${{ secrets.CLOUDFLARE_PROJECT_NAME }} --commit-dirty=true
 
-      - name: Deploy to Aliyun OSS
-        uses: docker://fangbinwei/aliyun-oss-website-action:v1
-        env:
-          ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
-          ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
-          BUCKET: hk-qladgk-com
-          ENDPOINT: oss-cn-hongkong.aliyuncs.com
-          FOLDER: public-aliyun-oss
-          SKIP_SETTING: true
-          INCREMENTAL: true
+      # - name: Deploy to Aliyun OSS
+      #   uses: docker://fangbinwei/aliyun-oss-website-action:v1
+      #   env:
+      #     ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
+      #     ACCESS_KEY_SECRET: ${{ secrets.ACCESS_KEY_SECRET }}
+      #     BUCKET: hk-qladgk-com
+      #     ENDPOINT: oss-cn-hongkong.aliyuncs.com
+      #     FOLDER: public-aliyun-oss
+      #     SKIP_SETTING: true
+      #     INCREMENTAL: true
