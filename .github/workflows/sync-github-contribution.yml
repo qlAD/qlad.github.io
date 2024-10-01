@@ -25,17 +25,10 @@ jobs:
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
-            dist/github-contribution-grid-snake.svg
-            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
+            static/assets/images/svg/github-contribution-grid-snake.svg?palette=github
+            static/assets/images/svg/github-contribution-grid-snake-dark.svg?palette=github-dark
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-      # 将生成的 SVG 文件移动到指定目录
-      - name: Move SVG Files
-        run: |
-          mkdir -p ./static/images/svg/
-          mv dist/github-contribution-grid-snake.svg ./static/images/svg/github-contribution-grid-snake.svg
-          mv dist/github-contribution-grid-snake-dark.svg ./static/images/svg/github-contribution-grid-snake-dark.svg
 
       # 提交更改
       - name: Git Add and Commit
@@ -45,5 +38,5 @@ jobs:
           committer_name: "github-actions[bot]"
           committer_email: "github-actions[bot]@users.noreply.github.com"
           add: |
-            './static/images/svg/github-contribution-grid-snake.svg'
-            './static/images/svg/github-contribution-grid-snake-dark.svg'
+            './static/assets/images/svg/github-contribution-grid-snake.svg'
+            './static/assets/images/svg/github-contribution-grid-snake-dark.svg'

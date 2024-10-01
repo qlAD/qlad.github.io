@@ -1,62 +1,20 @@
-<script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
-<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet' />
-<div id="vcomments"></div>
-  <script>
-    if ({{i18n "lanString"}}=="zh-CN") {
-                    Waline.init({
-            el: '#vcomments',
-           serverURL: 'https://waline-three-kohl.vercel.app/',
-           emoji: ['https://valine-emoji.bili33.top/bilibilitv','https://valine-emoji.bili33.top/bilibiliHotKey','https://valine-emoji.bili33.top/Tieba-New','https://valine-emoji.bili33.top/weibo',],
-           meta:['nick', 'mail'],
-           pageview: true,
-           reaction: true,
-           lang: "zh-CN",
-           locale: {
-          reactionTitle: '•畅所欲言——这里是开放区•',
-          nick: '昵称（可选）：',
-          mail: '邮箱（可选）：',
+<div id="tcomment"></div>
+<script
+  src="https://cdn.jsdelivr.net/npm/twikoo@1.6.39/dist/twikoo.nocss.js"
+  integrity="sha384-eBd9M/aODd3RsY/+FL32cs6WzRFrj6zJjnzGU50CpQA6gZ29LmVaoPUARsMgA1hT"
+  crossorigin="anonymous"
+></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/twikoo@1.6.39/dist/twikoo.css"
+/>
 
-          comment: '留言板',
-          placeholder: '点击下方登录后再评论，会有惊喜哦~',
-          gifSearchPlaceholder: '搜索表情包...',
-          admin: '作者',
-          sofa: '还没有人评论，快来抢沙发吧',
-          anonymous: '匿名者'
-        }
-          });
-
-    } 
-    else {
-                Waline.init({
-            el: '#vcomments',
-           serverURL: 'https://waline-three-kohl.vercel.app/',
-           emoji: ['https://valine-emoji.bili33.top/bilibilitv','https://valine-emoji.bili33.top/bilibiliHotKey','https://valine-emoji.bili33.top/Tieba-New','https://valine-emoji.bili33.top/weibo',],
-           meta:['nick', 'mail'],
-           pageview: true,
-           reaction: true,
-           lang:{{i18n "lanString"}},
-          });
-
-    }
-  document.getElementsByClassName('wl-power')[0].style.display = 'none';
-      document.querySelector(".wl-actions a").style.display = 'none'
-  </script>
-  <style type="text/css">
-    :root{
-      --waline-color: var(--tw-prose-quotes);
-      --waline-info-color: var(--tw-prose-quotes);
-      --waline-info-bgcolor: var(--tw-ring-color);
-      --waline-theme-color: rgba(var(--color-primary-400));
-      --waline-bgcolor: transparent;
-      --waline-border-color: #747474;
-    }
-    .wl-editor:focus, .wl-input:focus {
-    background: transparent;
-        }
-    .wl-editor,.wl-input{
-      max-width:88%;
-    }
-    .wl-reaction-item.active .wl-reaction-votes {
-    color: white;
-    }
-  </style>
+<script>
+  twikoo.init({
+    envId: "https://twikoo.qladgk.com/.netlify/functions/twikoo", // 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
+    el: "#tcomment", // 容器元素
+    // region: 'ap-guangzhou', // 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou；Vercel 环境不填
+    // path: location.pathname, // 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
+    // lang: 'zh-CN', // 用于手动设定评论区语言，支持的语言列表 https://github.com/twikoojs/twikoo/blob/main/src/client/utils/i18n/index.js
+  });
+</script>
