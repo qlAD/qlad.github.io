@@ -1,9 +1,43 @@
 {{ $disableImageOptimization := .Site.Params.disableImageOptimization | default false }}
 
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Ukenn2112/UkennWeb@3.0/index/web.js"></script>
+
+<link rel="stylesheet" href="https://jsd.012700.xyz/npm/@fortawesome/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="https://jsd.012700.xyz/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload='this.media="all"'>
+
 <style>#content_progress{display:none;}</style>
 
-<article class="max-w-full prose dark:prose-invert">
-    <div class="relative">
+<style>
+  #scroll-down {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: bounce 2s infinite; /* 添加跳动效果 */
+  }
+
+  .scroll-down-effects {
+    -webkit-animation: scroll-down-effect 1.5s infinite;
+    -moz-animation: scroll-down-effect 1.5s infinite;
+    -o-animation: scroll-down-effect 1.5s infinite;
+    -ms-animation: scroll-down-effect 1.5s infinite;
+    animation: scroll-down-effect 1.5s infinite
+  }
+
+  @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+          transform: translateY(0);
+      }
+      40% {
+          transform: translateY(-10px);
+      }
+      60% {
+          transform: translateY(-5px);
+      }
+  }
+</style>
+
+<article class="max-w-full prose dark:prose-invert" style="height: 90vh; overflow: hidden; position: relative;">
+  <div class="relative">
         <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gray-100"></div>
         <div class="mx-auto max-w-7xl p-0">
             <div class="relative sm:overflow-hidden">
@@ -93,7 +127,7 @@
                     {{/*  {{ with .Site.Params.Author.headline }}  */}}
                     <h2 class="mt-0 mb-0 text-xl text-neutral-800 dark:text-neutral-300">
                         {{/*  {{ . | markdownify }}  */}}
-                        <div id="poem_sentence" class="min-h-7 text-base md:text-xl">明月松间照，清泉石上流。</div>
+                        <div id="poem_sentence" class="min-h-7 text-base md:text-xl"></div>
                         {{/*  <div>{{ T `toot_motto` | safeHTML }} - <span class="italic text-base">Louis Pasteur</span></div>  */}}
                     </h2>
                     {{/*  {{ end }}  */}}
@@ -111,708 +145,20 @@
                         {{ end }}
                     </div>
 
-                    <section class="prose dark:prose-invert">{{ .Content }}</section>
+                    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
 
-                    <div class="tailwindcss-heatmap flex flex-col items-end text-[10px] leading-[12px] text-neutral-700 dark:text-neutral-400">
-                        <div class="flex flex-row items-end">
-
-                            <div class="flex flex-col justify-end items-end mr-1 mt-1 text-right">
-                                <span>Mon</span>
-                                <span>&nbsp;</span>
-                                <span>Wed</span>
-                                <span>&nbsp;</span>
-                                <span>Fri</span>
-                                <span>&nbsp;</span>
-                                <span>Sun</span>
-                            </div>
-
-                            <div class="heatmap">
-                                <div class="month mb-1 flex justify-around">
-                                  <span class="hide_by_js">Jan</span><span class="hide_by_js">Feb</span><span class="hide_by_js">Mar</span><span class="hide_by_js">Apr</span><span class="hide_by_js">May</span><span class="hide_by_js">Jun</span><span class="hide_by_js">Jul</span><span class="hide_by_js">Aug</span><span class="hide_by_js">Sep</span><span class="hide_by_js">Oct</span><span class="hide_by_js">Nov</span><span class="hide_by_js">Dec</span>
-                                </div>
-                                <div class="h-[84px]">
-                                    <div id="heatmap" class="flex flex-row">
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_1"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                      <div class="heatmap_week hide_by_js">
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                        <div class="heatmap_day heatmap_day_level_0"></div>
-                                      </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                      <div class="min-w-0 min-h-0 max-w-fit">
+                
+                        <div class="article-content max-w-full mb-20">
+                          {{ .Content }}
                         </div>
-
-                        <div class="flex mt-2 items-center">
-                            <span class="">{{ T `heatmap_less` | safeHTML }}</span>
-                            <div class="flex flex-row items-center gap-[2px] w-max h-[10px] mx-1">
-                                <span class="block w-[10px] h-[10px] rounded-sm bg-[#ebedf0] dark:bg-[#161b22]"></span>
-                                <span class="block w-[10px] h-[10px] rounded-sm bg-[#9be9a8] dark:bg-[#0e4429]"></span>
-                                <span class="block w-[10px] h-[10px] rounded-sm bg-[#40c463] dark:bg-[#006d32]"></span>
-                                <span class="block w-[10px] h-[10px] rounded-sm bg-[#30a14e] dark:bg-[#26a641]"></span>
-                                <span class="block w-[10px] h-[10px] rounded-sm bg-[#216e39] dark:bg-[#39d353]"></span>
-                            </div>
-                            <span class="">{{ T `heatmap_more` | safeHTML }}</span>
-                        </div>
-
+                      </div>
+                    </section>
+                    
+                    <div id="scroll-down" style="position: absolute; bottom: 20px; cursor: pointer; display: flex; justify-content: center; width: 100%;">
+                      <i class="fas fa-angle-down scroll-down-effects" style="font-size: 1.5rem;"></i>
                     </div>
-
-                    <script type="text/javascript">
-                        // 获取最近一年的文章数据
-                        {{ $pages := where .Site.RegularPages "Date" ">" (now.AddDate -1 0 0) }}
-                        {{ $pages := $pages.Reverse }}
-                        var blogInfo = {
-                            "pages": [
-                                {{ range $index, $element := $pages }}
-                                    {
-                                        "title": "{{ replace (replace .Title "《" "〈") "》" "〉" }}",
-                                        "date": "{{ .Date.Format "2006-01-02" }}",
-                                        "year": "{{ .Date.Format "2006" }}",
-                                        "month": "{{ .Date.Format "01" }}",
-                                        "day": "{{ .Date.Format "02" }}",
-                                        "word_count": "{{ .WordCount }}"
-                                    }{{ if ne (add $index 1) (len $pages) }},{{ end }}
-                                    {{ end }}
-                            ]
-                        };
-                        // console.log(blogInfo)
-
-                        let currentDate = new Date();
-                        currentDate.setFullYear(currentDate.getFullYear() - 1);
-
-                        let startDate;
-
-                        let monthDiv = document.querySelector('.month');
-                        let monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-                        if (window.innerWidth < 768) {
-                            numMonths = 6;
-                        } else {
-                            numMonths = 12;
-                        }
-
-                        let startMonthIndex = (currentDate.getMonth() - (numMonths - 1) + 12) % 12;
-                        for (let i = startMonthIndex; i < startMonthIndex + numMonths; i++) {
-                            let monthSpan = document.createElement('span');
-                            let monthIndex = i % 12;
-                            monthSpan.textContent = monthNames[monthIndex];
-                            monthDiv.appendChild(monthSpan);
-                        }
-
-                        function getStartDate() {
-                            const today = new Date();
-
-                            if (window.innerWidth < 768) {
-                                numMonths = 6;
-                            } else {
-                                numMonths = 12;
-                            }
-
-                            const startDate = new Date(today.getFullYear(), today.getMonth() - numMonths + 1, 1, today.getHours(), today.getMinutes(), today.getSeconds());
-
-                            while (startDate.getDay() !== 1) {
-                                startDate.setDate(startDate.getDate() + 1);
-                            }
-
-                            return startDate;
-                        }
-
-                        function getWeekDay(date) {
-                            const day = date.getDay();
-                            return day === 0 ? 6 : day - 1;
-                        }
-
-                        function createDay(date, title, count, post) {
-                            const day = document.createElement("div");
-
-                            day.className = "heatmap_day";
-
-                            day.setAttribute("data-title", title);
-                            day.setAttribute("data-count", count);
-                            day.setAttribute("data-post", post);
-                            day.setAttribute("data-date", date);
-
-                            day.addEventListener("mouseenter", function () {
-                                const tooltip = document.createElement("div");
-                                tooltip.className = "heatmap_tooltip";
-
-                                let tooltipContent = "";
-
-                                if (post && parseInt(post, 10) !== 0) {
-                                    tooltipContent += '<span class="heatmap_tooltip_post">' + '共 ' + post + ' 篇' + '</span>';
-                                }
-
-                                if (count && parseInt(count, 10) !== 0) {
-                                    tooltipContent += '<span class="heatmap_tooltip_count">' + ' ' + count + ' 字；' + '</span>';
-                                }
-
-                                if (title && parseInt(title, 10) !== 0) {
-                                    tooltipContent += '<span class="heatmap_tooltip_title">' + title + '</span>';
-                                }
-
-                                if (date) {
-                                    tooltipContent += '<span class="heatmap_tooltip_date">' + date + '</span>';
-                                }
-
-                                tooltip.innerHTML = tooltipContent;
-                                day.appendChild(tooltip);
-                            });
-
-                            day.addEventListener("mouseleave", function () {
-                                const tooltip = day.querySelector(".heatmap_tooltip");
-                                if (tooltip) {
-                                    day.removeChild(tooltip);
-                                }
-                            });
-
-                            if (count == 0 ) {
-                                day.classList.add("heatmap_day_level_0");
-                            } else if (count > 0 && count < 1000) {
-                                day.classList.add("heatmap_day_level_1");
-                            } else if (count >= 1000 && count < 2000) {
-                                day.classList.add("heatmap_day_level_2");
-                            } else if (count >= 2000 && count < 3000) {
-                                day.classList.add("heatmap_day_level_3");
-                            } else {
-                                day.classList.add("heatmap_day_level_4");
-                            }
-
-                            return day;
-                        }
-
-                        function createWeek() {
-                            const week = document.createElement('div');
-                            week.className = 'heatmap_week';
-                            return week;
-                        }
-
-                        function createHeatmap() {
-                            const container = document.getElementById('heatmap');
-                            const startDate = getStartDate();
-                            const endDate = new Date();
-                            const weekDay = getWeekDay(startDate);
-
-                            let currentWeek = createWeek();
-                            container.appendChild(currentWeek);
-
-                            let currentDate = startDate;
-                            let i = 0;
-
-                            while (currentDate <= endDate) {
-                                if (i % 7 === 0 && i !== 0) {
-                                    currentWeek = createWeek();
-                                    container.appendChild(currentWeek);
-                                }
-
-                                const dateString = `${currentDate.getFullYear()}-${("0" + (currentDate.getMonth()+1)).slice(-2)}-${("0" + (currentDate.getDate())).slice(-2)}`;
-
-                                const articleDataList = blogInfo.pages.filter(page => page.date === dateString);
-
-                                if (articleDataList.length > 0) {
-                                    const titles = articleDataList.map(data => data.title);
-                                    const title = titles.map(t => `《${t}》`).join('<br />');
-
-                                    let count = 0;
-                                    let post = articleDataList.length;
-
-                                    articleDataList.forEach(data => {
-                                        count += parseInt(data.word_count, 10);
-                                    });
-
-                                    const formattedDate = formatDate(currentDate);
-                                    const day = createDay(formattedDate, title, count, post);
-                                    currentWeek.appendChild(day);
-                                } else {
-                                    const formattedDate = formatDate(currentDate);
-                                    const day = createDay(formattedDate, '', '0', '0');
-                                    currentWeek.appendChild(day);
-                                }
-
-                                i++;
-                                currentDate.setDate(currentDate.getDate() + 1);
-                            }
-                        }
-
-                        function formatDate(date) {
-                            const options = { month: 'short', day: 'numeric', year: 'numeric' };
-                            return date.toLocaleDateString('en-US', options);
-                        }
-
-                        // 获取所有带有 class="hide_by_js" 的元素
-                        var elements = document.querySelectorAll('.hide_by_js');
-
-                        // 遍历这些元素并从 DOM 中删除它们
-                        elements.forEach(function(element) {
-                            element.parentNode.removeChild(element);
-                        });
-
-                        createHeatmap();
-
-                    </script>
-
+              
                 </div>
             </div>
         </div>
@@ -820,50 +166,184 @@
 </article>
 
 <section>
-    {{ $recentArticles := 5 }}
-    {{ $showMoreLinkDest := "/blog" }}
-    {{ if .Site.Params.homepage.showRecent | default false }}
-    {{ if index .Site.Params.homepage "showRecentItems" }}
-    {{ $recentArticles = .Site.Params.homepage.showRecentItems }}
-    {{ end }}
-    <h2 class="mt-8 text-2xl font-extrabold mb-10">{{ i18n "shortcode.recent_articles" }}</h2>
+    <h2 class="mt-8 text-2xl font-extrabold mb-6">{{ i18n "my_contribution" }}</h2>
+      <div class="tanChiShe">
+        <img id="tanChiShe" src="{{ "assets/images/svg/github-contribution-grid-snake.svg" | relURL }}" alt="">
+      </div>
+</section>
 
-    {{ if and .Site.Params.homepage.cardView (not .Site.Params.homepage.cardViewScreenWidth) | default false }}
-    {{ partial "recent-articles/list.html" . }}
-    {{ else if and .Site.Params.homepage.cardView .Site.Params.homepage.cardViewScreenWidth | default false }}
-    {{ partial "recent-articles/cardview-fullwidth.html" . }}
-    {{ else }}
-    {{ partial "recent-articles/cardview.html" . }}
-    {{ end }}
+<section>
+  <h2 class="mt-8 text-2xl font-extrabold mb-6">{{ i18n "my_sites" }}</h2>
+  <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+      <!-- 博客 -->
+      <a href="https://blog.example.com" class="flex items-center justify-center bg-transparent border border-[rgba(255,255,255,0.3)] text-white font-semibold py-2 px-3 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-sm">
+          <i class="fas fa-blog mr-1 text-sm"></i> {{ i18n "blog" }}
+      </a>
+      <!-- 云盘 -->
+      <a href="https://cloud.example.com" class="flex items-center justify-center bg-transparent border border-[rgba(255,255,255,0.3)] text-white font-semibold py-2 px-3 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-sm">
+          <i class="fas fa-cloud mr-1 text-sm"></i> {{ i18n "cloud" }}
+      </a>
+      <!-- 图床 -->
+      <a href="https://imagehost.example.com" class="flex items-center justify-center bg-transparent border border-[rgba(255,255,255,0.3)] text-white font-semibold py-2 px-3 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-sm">
+          <i class="fas fa-image mr-1 text-sm"></i> {{ i18n "image_host" }}
+      </a>
+      <!-- 反馈 -->
+      <a href="https://feedback.example.com" class="flex items-center justify-center bg-transparent border border-[rgba(255,255,255,0.3)] text-white font-semibold py-2 px-3 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-sm">
+          <i class="fas fa-comment-dots mr-1 text-sm"></i> {{ i18n "feedback" }}
+      </a>
+      <!-- 更多网站 -->
+      <a href="https://other.example.com" class="flex items-center justify-center bg-transparent border border-[rgba(255,255,255,0.3)] text-white font-semibold py-2 px-3 rounded-lg shadow-md hover:shadow-lg transition duration-300 transform hover:scale-105 text-sm">
+          <i class="fas fa-link mr-1 text-sm"></i> {{ i18n "more_sites" }}
+      </a>
+  </div>
+</section>
 
-    {{ if .Site.Params.homepage.showMoreLink | default false }}
-    {{ if index .Site.Params.homepage "showRecentItems" }}
-    {{ $showMoreLinkDest = .Site.Params.homepage.showMoreLinkDest }}
-    {{ end }}
-    <div class="mt-10 flex justify-center">
-    <a href="{{ $showMoreLinkDest }}">
-        <button
-        class="bg-transparent hover:text-primary-500 prose dark:prose-invert font-semibold hover:text-white py-2 px-4 border border-primary-500 hover:border-transparent rounded">
-        {{ i18n "recent.show_more" | markdownify }}
-        </button>
-    </a>
-    </div>
-    {{ end }}
-    {{ end }}
+<section>
+  <h2 class="mt-6 text-2xl font-extrabold mb-2">{{ i18n "skills_wall" }}</h2>
+
+  <!-- 前端开发技能 -->
+  <h3 class="mt-4 mb-1">{{ i18n "frontend_skills" }}</h3>
+  <div class="flex flex-wrap gap-2"> <!-- 使用 gap 增加间距 -->
+      <a href="javascript:void(0);" target="_blank" rel="noopener noreferrer" aria-label="HTML badge">
+          <img class="nozoom ml-2" alt="HTML" src="https://img.shields.io/badge/HTML-FF5722?style=flat&logo=html5&logoColor=white">
+      </a>
+      <a href="javascript:void(0);" target="_blank" rel="noopener noreferrer" aria-label="CSS badge">
+          <img class="nozoom ml-2" alt="CSS" src="https://img.shields.io/badge/CSS-3F51B5?style=flat&logo=css3&logoColor=white">
+      </a>
+      <a href="javascript:void(0);" target="_blank" rel="noopener noreferrer" aria-label="JavaScript badge">
+          <img class="nozoom ml-2" alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F9D74D?style=flat&logo=javascript&logoColor=black">
+      </a>
+  </div>
+
+  <!-- 后端开发技能 -->
+  <h3 class="mt-4 mb-1">{{ i18n "backend_skills" }}</h3>
+  <div class="flex flex-wrap gap-2"> <!-- 使用 gap 增加间距 -->
+      <a href="javascript:void(0);" target="_blank" rel="noopener noreferrer" aria-label="C badge">
+          <img class="nozoom ml-2" alt="C" src="https://img.shields.io/badge/C-A8B400?style=flat&logo=c&logoColor=white">
+      </a>
+      <a href="javascript:void(0);" target="_blank" rel="noopener noreferrer" aria-label="C++ badge">
+          <img class="nozoom ml-2" alt="C++" src="https://img.shields.io/badge/C++-00599C?style=flat&logo=c%2B%2B&logoColor=white">
+      </a>
+      <a href="javascript:void(0);" target="_blank" rel="noopener noreferrer" aria-label="Python badge">
+          <img class="nozoom ml-2" alt="Python" src="https://img.shields.io/badge/Python-306998?style=flat&logo=python&logoColor=white">
+      </a>
+  </div>
+
+  <!-- 软件工具技能 -->
+  <h3 class="mt-4 mb-1">{{ i18n "software_tools" }}</h3>
+  <div class="flex flex-wrap gap-2"> <!-- 使用 gap 增加间距 -->
+      <a href="javascript:void(0);" target="_blank" rel="noopener noreferrer" aria-label="Linux badge">
+          <img class="nozoom ml-2" alt="Linux" src="https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black">
+      </a>
+      <a href="javascript:void(0);" target="_blank" rel="noopener noreferrer" aria-label="Windows badge">
+          <img class="nozoom ml-2" alt="Windows" src="https://img.shields.io/badge/Windows-0078D6?style=flat&logo=windows&logoColor=white">
+      </a>
+      <a href="javascript:void(0);" target="_blank" rel="noopener noreferrer" aria-label="Git badge">
+          <img class="nozoom ml-2" alt="Git" src="https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white">
+      </a>
+      <a href="javascript:void(0);" target="_blank" rel="noopener noreferrer" aria-label="VSCode badge">
+          <img class="nozoom ml-2" alt="VSCode" src="https://img.shields.io/badge/VS_Code-007ACC?style=flat&logo=visual-studio-code&logoColor=white">
+      </a>
+      <a href="javascript:void(0);" target="_blank" rel="noopener noreferrer" aria-label="Markdown badge">
+          <img class="nozoom ml-2" alt="Markdown" src="https://img.shields.io/badge/Markdown-000000?style=flat&logo=markdown&logoColor=white">
+      </a>
+      <a href="javascript:void(0);" target="_blank" rel="noopener noreferrer" aria-label="Hugo badge">
+          <img class="nozoom ml-2" alt="Hugo" src="https://img.shields.io/badge/Hugo-FF4088?style=flat&logo=hugo&logoColor=white">
+      </a>
+      <a href="javascript:void(0);" target="_blank" rel="noopener noreferrer" aria-label="阿里云 badge">
+          <img class="nozoom ml-2" alt="阿里云" src="https://img.shields.io/badge/阿里云-FF4B00?style=flat&logo=alibaba&logoColor=white">
+      </a>
+      <a href="javascript:void(0);" target="_blank" rel="noopener noreferrer" aria-label="Vercel badge">
+          <img class="nozoom ml-2" alt="Vercel" src="https://img.shields.io/badge/Vercel-000000?style=flat&logo=vercel&logoColor=white">
+      </a>
+      <a href="javascript:void(0);" target="_blank" rel="noopener noreferrer" aria-label="Cloudflare badge">
+          <img class="nozoom ml-2" alt="Cloudflare" src="https://img.shields.io/badge/Cloudflare-F38020?style=flat&logo=cloudflare&logoColor=white">
+      </a>
+  </div>
+</section>
+
+
+<section>
+  <!-- 显示最近的文章 -->
+  {{ $recentArticles := 5 }}
+  {{ $showMoreLinkDest := "/blog" }}
+  {{ if .Site.Params.homepage.showRecent | default false }}
+  {{ if index .Site.Params.homepage "showRecentItems" }}
+  {{ $recentArticles = .Site.Params.homepage.showRecentItems }}
+  {{ end }}
+  <h2 class="mt-8 text-2xl font-extrabold mb-10">{{ i18n "shortcode.recent_articles" }}</h2>
+
+  {{ if and .Site.Params.homepage.cardView (not .Site.Params.homepage.cardViewScreenWidth) | default false }}
+  {{ partial "recent-articles/list.html" . }}
+  {{ else if and .Site.Params.homepage.cardView .Site.Params.homepage.cardViewScreenWidth | default false }}
+  {{ partial "recent-articles/cardview-fullwidth.html" . }}
+  {{ else }}
+  {{ partial "recent-articles/cardview.html" . }}
+  {{ end }}
+
+  {{ if .Site.Params.homepage.showMoreLink | default false }}
+  {{ if index .Site.Params.homepage "showRecentItems" }}
+  {{ $showMoreLinkDest = .Site.Params.homepage.showMoreLinkDest }}
+  {{ end }}
+  <div class="mt-10 flex justify-center">
+      <a href="{{ $showMoreLinkDest }}">
+          <button class="bg-transparent hover:text-primary-500 prose dark:prose-invert font-semibold hover:text-white py-2 px-4 border border-primary-500 hover:border-transparent rounded">
+              {{ i18n "recent.show_more" | markdownify }}
+          </button>
+      </a>
+  </div>
+  {{ end }}
+  {{ end }}
 </section>
 
 {{ if .Site.Params.homepage.layoutBackgroundBlur | default false }}
 <div id="background-blur" class="fixed opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl"></div>
 
 <script>
-    const poemSentences = [
-        "道可道，非常道，名可名，非常名。", "无名天地之始，有名万物之母。", "上善若水，水善利万物而不争。", "道冲而用之或不盈。", "天地不仁，以万物为刍狗。", "谷神不死，是谓玄牝。", "天长地久，天地所以能长且久者。", "上善若水，水善利万物而不争。", "持而盈之，不如其已；揣而锐之，不可长保。", "载营魄而岌岌，匿精神而恍惚。", "三十辐，共一毂；当其无，有车之用。", "五色令人目盲，五音令人耳聋。", "宠辱若惊，贵大患若身。", "视之不见，名之曰夷；听之不闻，名之曰希。", "古之善为士者，微妙而深远。", "致虚极，守静笃。", "太上，不知有之；其次，亲而誉之。", "大道废，有仁义；智者出，有大言。", "绝圣弃智，民复归于愚。", "唯之与阿，皆为若虞。", "孔德之容，惟道之馨。", "曲则全，枉则直；洼则盈，隳则起。", "希言自然，故治之以无为。", "企者不立，跨者不行。", "有物混成，先天地生。", "重为轻根，静为躁君。", "善行，无辙迹；善言，无瑕谪。", "知其雄，守其雌；知其白，守其黑。", "将欲取之，必先予之。", "以道佐人主者，不以兵强天下。", "夫佳兵者，不祥之器。", "道常无名，朴虽小，天下皆知之。", "知人者智，自知者明。", "大道泛兮，其可左右。", "执大象，天下往；执大明，天下以明。", "将欲灭之，必先存之；将欲弱之，必先强之。", "道常无为，无为而无不为。", "上德无为，故无以为功；下德有为，故无以为名。", "昔日之得，今日之失。", "反者道之动，弱者道之用。", "上士闻道，勤而行之；中士闻道，犹疑而行之。", "道生一，一生二，二生三，三生万物。", "柔弱胜刚强，水可载舟，亦可覆舟。", "名与身孰亲？", "大成若缺，其用不弊。", "天下有道，却走马而行。", "无欲无求，故常无欲。", "为学日益，为道日损。", "圣人无常心，以百姓之心为心。", "生之徒，死之徒；生之徒，反之徒。", "道生之，德蓄之，物形之，势成之。", "道德之所存，万物之所因。", "使民以重，必先以轻。", "善建者不拔，善抱者不离。", "柔能克刚，弱能胜强。", "知者不言，言者不知。", "以道佐人主者，不以兵强天下。", "故治国者，必先治民。", "治人事天，行之于天。", "治大国者，如治小国。", "大国者下流，小国者上流。", "道者万物之母，故知者不言。", "为无为，行无行。", "未发之难，早之可知。", "古之善为士者，微妙而深远。", "江海之所以能为百谷之主，者以其善下之。", "我有三宝，持而保之：慈、俭、不敢为天下先。", "善为士者，不武；善战者，不怒。", "夫唯不争，故天下莫能与之争。", "我言甚易知，甚易行；我行甚难知，甚难行。", "知者不言，言者不知。", "当今之世，治国者，必先治人。", "勇者不惧，勇者不惧于天下。", "死生之道，动静之道。", "人之所畏，勿为；人之所恶，勿为。", "人之所畏，勿为。", "道之为道，唯道之为道。", "柔能克刚，弱能胜强。", "故持而盈之，不如其已。", "小国寡民，使有什伯之器者，足以为矣。", "信言不美，美言不信；善者不辩，辩者不善。"
-    ];
+  // 滚动到下一个内容
+  document.getElementById('scroll-down').addEventListener('click', function() {
+    window.scrollBy({ top: window.innerHeight, behavior: 'smooth' }); // 滚动到下方
+  });
+</script>
 
-    const randomIndex = Math.floor(Math.random() * poemSentences.length);
-    const randomSentence = poemSentences[randomIndex];
+<script>
+  const poemSentences = [
+      "道可道，非常道；名可名，非常名。", 
+      "无名天地之始；有名万物之母。",
+      "故常无欲，以观其妙；常有欲，以观其徼。",
+      "此两者同出而异名，同谓之玄。",
+      "玄之又玄，众妙之门。",
+      // 继续添加更多的句子
+  ];
 
-    document.getElementById('poem_sentence').innerText = randomSentence;
+  let currentIndex = 0;  // 当前句子的索引
+  let charIndex = 0;     // 当前句子中字符的索引
+  const typingSpeed = 100;  // 打字速度，毫秒
+  const delayBetweenSentences = 2000;  // 切换到下一句前的停顿时间，毫秒
+
+  const poemElement = document.getElementById('poem_sentence');
+
+  // 打字效果函数
+  function typeSentence() {
+      const currentSentence = poemSentences[currentIndex];
+
+      if (charIndex < currentSentence.length) {
+          poemElement.innerHTML += currentSentence.charAt(charIndex);
+          charIndex++;
+          setTimeout(typeSentence, typingSpeed);
+      } else {
+          // 当前句子打完后停顿一段时间再显示下一句
+          setTimeout(() => {
+              charIndex = 0;
+              currentIndex = (currentIndex + 1) % poemSentences.length;  // 切换到下一句，循环播放
+              poemElement.innerHTML = '';  // 清空当前内容
+              typeSentence();  // 开始打下一句
+          }, delayBetweenSentences);
+      }
+  }
+
+  // 开始打第一句
+  typeSentence();
 </script>
 
 <script>

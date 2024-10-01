@@ -1,6 +1,21 @@
 # Translations for English
 # https://gohugo.io/content-management/multilingual/#translation-of-strings
 
+lanString = "en"
+
+my_contribution = "My GitHub Contribution"
+my_sites = "My Websites"
+skills_wall = "Skills Wall"
+frontend_skills = "Frontend Skills"
+backend_skills = "Backend Skills"
+software_tools = "Software Tools"
+blog = "Blog"
+cloud = "Cloud Drive"
+image_host = "Image Host"
+feedback = "Feedback"
+more_sites = "More Websites"
+
+
 # === baseof ==
 [backToTop]
 other = "Back to Top"

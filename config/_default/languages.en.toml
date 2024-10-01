@@ -2,7 +2,7 @@ disabled = false
 languageCode = "en"
 languageName = "English"
 weight = 2
-title = "qlAD's Technical Notes"
+title = "qlAD's Blog"
 
 [params]
   displayName = "English"

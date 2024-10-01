@@ -1,48 +1,65 @@
-<div class="comment-on flex flex-col md:flex-row items-start md:items-center mt-8 text-base capitalize print:hidden">
-    <div id="load-giscus" class="inline-flex items-center relative">
-        <span class="ml-2 mr-1 cursor-pointer">{{ partial "icon.html" "giscus" }}</span>
-        <span class='mr-2 opacity-75 hover:opacity-100 cursor-pointer duration-300 ease-in-out'>Giscus</span>
-        <span class="cursor-pointer">点击加载评论</span>
-    </div>
-</div>
-<div id="comments" class=""></div>
-<script>
-    function loadGiscus() {
-        return new Promise((resolve) => {
-            const script = document.createElement('script');
-            script.src = 'https://giscus.app/client.js';
-            script.setAttribute('data-repo', 'qlAD/Blog');
-            script.setAttribute('data-repo-id', 'R_kgDOMvW0PA');
-            script.setAttribute('data-category', 'Giscus');
-            script.setAttribute('data-category-id', 'DIC_kwDOMvW0PM4CiVt3');
-            script.setAttribute('data-mapping', 'pathname');
-            script.setAttribute('data-strict', '1');
-            script.setAttribute('data-reactions-enabled', '1');
-            script.setAttribute('data-emit-metadata', '0');
-            script.setAttribute('data-input-position', 'bottom');
-            script.setAttribute('data-lang', 'zh-CN');
-            script.setAttribute('data-loading', 'lazy');
-            script.setAttribute('crossorigin', 'anonymous');
-            script.async = true;
-
-            const htmlElement = document.documentElement;
-            if (htmlElement.classList.contains('dark')) {
-                script.setAttribute('data-theme', 'dark_dimmed');
-            } else {
-                script.setAttribute('data-theme', 'light');
-            }
-
-            script.addEventListener('load', () => {
-                resolve();
-            });
-
-            document.getElementById('comments').appendChild(script);
-        });
-    }
-
-    document.getElementById('load-giscus').addEventListener('click', async () => {
-        await loadGiscus();
-        document.getElementById('load-giscus').classList.add('hidden');
-        document.getElementById('load-giscus-desc').classList.add('!hidden');
-    });
+<script type="text/javascript">
+      document.getElementByClassName("aline-pageview-count")[0].data-path = window.location.pathname;
 </script>
+<script src='//unpkg.com/@waline/client@v2/dist/waline.js'></script>
+<link href='//unpkg.com/@waline/client@v2/dist/waline.css' rel='stylesheet' />
+<div id="vcomments"></div>
+  <script>
+    if ({{i18n "lanString"}}=="zh-CN") {
+                    Waline.init({
+            el: '#vcomments',
+           serverURL: 'https://waline-three-kohl.vercel.app/',
+           emoji: ['https://valine-emoji.bili33.top/bilibilitv','https://valine-emoji.bili33.top/bilibiliHotKey','https://valine-emoji.bili33.top/Tieba-New','https://valine-emoji.bili33.top/weibo',],
+           meta:['nick', 'mail'],
+           pageview: true,
+           reaction: true,
+           lang: "zh-CN",
+           locale: {
+          reactionTitle: '•畅所欲言——这里是开放区•',
+          nick: '昵称（可选）：',
+          mail: '邮箱（可选）：',
+
+          comment: '留言板',
+          placeholder: '点击下方登录后再评论，会有惊喜哦~',
+          gifSearchPlaceholder: '搜索表情包...',
+          admin: '作者',
+          sofa: '还没有人评论，快来抢沙发吧',
+          anonymous: '匿名者'
+        }
+          });
+
+    } 
+    else {
+                Waline.init({
+            el: '#vcomments',
+           serverURL: 'https://waline-three-kohl.vercel.app/',
+           emoji: ['https://valine-emoji.bili33.top/bilibilitv','https://valine-emoji.bili33.top/bilibiliHotKey','https://valine-emoji.bili33.top/Tieba-New','https://valine-emoji.bili33.top/weibo',],
+           meta:['nick', 'mail'],
+           pageview: true,
+           reaction: true,
+           lang:{{i18n "lanString"}},
+          });
+
+    }
+  document.getElementsByClassName('wl-power')[0].style.display = 'none';
+      document.querySelector(".wl-actions a").style.display = 'none'
+  </script>
+  <style type="text/css">
+    :root{
+      --waline-color: var(--tw-prose-quotes);
+      --waline-info-color: var(--tw-prose-quotes);
+      --waline-info-bgcolor: var(--tw-ring-color);
+      --waline-theme-color: rgba(var(--color-primary-400));
+      --waline-bgcolor: transparent;
+      --waline-border-color: #747474;
+    }
+    .wl-editor:focus, .wl-input:focus {
+    background: transparent;
+        }
+    .wl-editor,.wl-input{
+      max-width:88%;
+    }
+    .wl-reaction-item.active .wl-reaction-votes {
+    color: white;
+    }
+  </style>

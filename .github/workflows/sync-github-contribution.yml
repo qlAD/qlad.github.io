@@ -1,0 +1,49 @@
+name: Generate GitHub Contribution Snake Animation
+
+on:
+  # run automatically every 24 hours
+  schedule:
+    - cron: "0 */24 * * *" 
+  
+  # allows to manually run the job at any time
+  workflow_dispatch:
+  
+  # run on every push on the master branch
+  push:
+    branches:
+    - main
+    
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      # 生成 GitHub 贡献图
+      - name: Generate GitHub Contribution Snake SVG
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-contribution-grid-snake.svg
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      # 将生成的 SVG 文件移动到指定目录
+      - name: Move SVG Files
+        run: |
+          mkdir -p ./static/images/svg/
+          mv dist/github-contribution-grid-snake.svg ./static/images/svg/github-contribution-grid-snake.svg
+          mv dist/github-contribution-grid-snake-dark.svg ./static/images/svg/github-contribution-grid-snake-dark.svg
+
+      # 提交更改
+      - name: Git Add and Commit
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "chore(svg): update contribution snake SVGs"
+          committer_name: "github-actions[bot]"
+          committer_email: "github-actions[bot]@users.noreply.github.com"
+          add: |
+            './static/images/svg/github-contribution-grid-snake.svg'
+            './static/images/svg/github-contribution-grid-snake-dark.svg'

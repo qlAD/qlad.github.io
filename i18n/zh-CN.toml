@@ -2,6 +2,21 @@
 # 简体中文的翻译
 # https://gohugo.io/content-management/multilingual/#translation-of-strings
 
+lanString = "zh-CN"
+
+my_contribution = "我的 GitHub 贡献"
+my_sites = "我的网站"
+skills_wall = "技能墙"
+frontend_skills = "前端开发技能"
+backend_skills = "后端开发技能"
+software_tools = "软件工具"
+blog = "博客"
+cloud = "云盘"
+image_host = "图床"
+feedback = "反馈"
+more_sites = "更多网站"
+
+
 # === baseof ==
 [backToTop]
 other = "回到顶部"
@@ -259,7 +274,7 @@ other = "qlAD'博客"
 other = "我的随手拍。我不会拍照，所以只能叫随手拍。通过 <a href='https://e5n.cc/tags/ealbum' target='_blank' rel='noreferrer noopener nofollow'>#ealbum</a> 引用。"
 
 [goods_quote]
-other ="好物推荐 <span class='emoji'>💄</span> 部分链接可能带有 aff 推广，不喜可删！或直接搜券👉<a href='https://www.kubaicai.com/' target='_blank' rel='noreferrer noopener nofollow'>www.kubaicai.com</a>"
+other = "好物推荐 <span class='emoji'>💄</span> 部分链接可能带有 aff 推广，不喜可删！或直接搜券👉<a href='https://www.kubaicai.com/' target='_blank' rel='noreferrer noopener nofollow'>www.kubaicai.com</a>"
 
 [memos_quote]
 other = "共嘀咕了 <span id='memosCount'></span> 条 <a href='https://memos.eallion.com/' target='_blank' rel='noreferrer noopener nofollow'>Memos</a> <span class='emoji'>🎉</span>"
@@ -271,55 +286,55 @@ other = "加载更多"
 other = "我的 <a href='https://neodb.social/users/eallion@e5n.cc/' target='_blank' rel='noreferrer noopener nofollow'>观影</a> 记录，数据来自 <a href='https://neodb.social/users/eallion@e5n.cc/' target='_blank' rel='noreferrer noopener nofollow'>NeoDB</a> <span class='emoji'>🎬</span>"
 
 [movie_time]
-other ="观影时间"
+other = "观影时间"
 
 [movie_rating]
-other ="NeoDB 评分"
+other = "NeoDB 评分"
 
 [movie_count]
-other ="评分人数"
+other = "评分人数"
 
 [movie_count_text]
-other ="人评分"
+other = "人评分"
 
 [movie_desc]
-other ="我的 <a href='https://neodb.social/users/eallion@e5n.cc/' target='_blank' rel='noreferrer noopener nofollow'>NeoDB</a> 书影音标记记录 ✨"
+other = "我的 <a href='https://neodb.social/users/eallion@e5n.cc/' target='_blank' rel='noreferrer noopener nofollow'>NeoDB</a> 书影音标记记录 ✨"
 
 [movie_normal]
-other ="常规"
+other = "常规"
 
 [movie_web_full_screen]
-other ="网页全屏"
+other = "网页全屏"
 
 [movie_browser_full_screen]
-other ="全屏"
+other = "全屏"
 
 [movie_exit_full_screen]
-other ="退出全屏"
+other = "退出全屏"
 
 [movie_cate_all]
-other ="全部"
+other = "全部"
 
 [movie_cate_tv]
-other ="电视剧"
+other = "电视剧"
 
 [movie_cate_movie]
-other ="电影"
+other = "电影"
 
 [movie_cate_music]
-other ="音乐"
+other = "音乐"
 
 [movie_cate_game]
-other ="游戏"
+other = "游戏"
 
 [movie_cate_podcast]
-other ="播客"
+other = "播客"
 
 [movie_cate_book]
-other ="图书"
+other = "图书"
 
 [movie_loadmore]
-other ="加载更多"
+other = "加载更多"
 
 [penta_quote]
 other = "我的 LOL 五杀。有 TGP（WeGame）后才开始记录的自动五杀截图。"

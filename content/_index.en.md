@@ -4,12 +4,8 @@ date: 2021-01-01T00:00:00Z
 draft: false
 ---
 
-</br>
+***I love recording and sharing***, 📝💡  
+***Whether it's technical insights or everyday life details***, 🔍🌱  
+***I will post here irregularly***. 📅📝  
 
-***I love recording and sharing***,📝💡
-***Whether it is technical insights or bits of life***,🔍🌱
-***I will publish here from time to time***. 📅📝
-
-In addition to recording articles, this site also has many more rich and interesting features waiting for you to discover. 🎉🎈
-
-</br>
+In addition to recording articles, this website also has more rich and interesting features waiting for you to discover. 🎉🎈
