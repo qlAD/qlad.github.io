@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="color-scheme: dark;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="qlAD — 全栈开发工程师。把一次请求从浏览器一路带到数据库。">
+  <meta name="theme-color" content="#0B0D11">
+  <title>qlAD · 全栈开发工程师</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       Tokens — "from browser to database"
+       ============================================================ */
+    :root {
+      --ink:        #0B0D11;
+      --ink-2:      #0F1217;
+      --panel:      #14181F;
+      --panel-2:    #191E27;
+      --line:       #262C36;
+      --line-2:     #333C49;
+
+      --text:       #E7E9EE;
+      --text-dim:   #9AA3B0;
+      --text-mute:  #5E6675;
+
+      --signal:     #FF913D;   /* amber — the one brand accent */
+      --signal-2:   #FFAE6B;
+      --signal-soft:rgba(255, 145, 61, 0.12);
+      --signal-line:rgba(255, 145, 61, 0.38);
+
+      --client:     #57C7D4;   /* cyan — semantic: the browser/client end only */
+      --client-soft:rgba(87, 199, 212, 0.12);
+
+      --ok:         #5BD6A4;
+
+      --font-display: 'Space Grotesk', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+      --font-body:    'Inter', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+      --font-mono:    'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+      --maxw: 1080px;
+      --radius: 14px;
+      --radius-sm: 9px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ============================================================
+       Reset & base
+       ============================================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: var(--line-2) transparent;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--line-2); }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--ink);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    ::selection { background: var(--signal-soft); color: var(--signal-2); }
+
+    a { color: inherit; }
+
+    .skip-link {
+      position: fixed; top: -120%; left: 1rem; z-index: 300;
+      background: var(--signal); color: #1a0f02;
+      padding: 0.7rem 1.2rem; border-radius: 0 0 8px 8px;
+      font-family: var(--font-mono); font-size: 0.82rem; font-weight: 500;
+      text-decoration: none; transition: top 0.2s ease;
+    }
+    .skip-link:focus { top: 0; }
+
+    :focus-visible {
+      outline: 2px solid var(--signal);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ============================================================
+       Shared primitives
+       ============================================================ */
+    .container { max-width: var(--maxw); margin: 0 auto; width: 100%; }
+
+    .section { padding: clamp(5rem, 11vw, 8.5rem) 1.5rem; position: relative; }
+    .section[id] { scroll-margin-top: 88px; }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--text-mute);
+      display: inline-flex; align-items: center; gap: 0.5ch;
+    }
+    .eyebrow b { color: var(--signal); font-weight: 500; }
+
+    .section-head { margin-bottom: 3.5rem; max-width: 640px; }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 4.5vw, 2.7rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.12;
+      margin-top: 1rem;
+      text-wrap: balance;
+    }
+    .section-sub {
+      color: var(--text-dim);
+      margin-top: 1rem;
+      font-size: 1.02rem;
+      max-width: 52ch;
+      text-wrap: pretty;
+    }
+
+    /* ============================================================
+       Navigation
+       ============================================================ */
+    .nav {
+      position: fixed; inset: 0 0 auto 0; z-index: 100;
+      padding: 0 1.5rem;
+      transition: background 0.4s var(--ease), border-color 0.4s var(--ease);
+      border-bottom: 1px solid transparent;
+    }
+    .nav.scrolled {
+      background: rgba(11, 13, 17, 0.72);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      border-bottom-color: var(--line);
+    }
+    .nav-inner {
+      max-width: var(--maxw); margin: 0 auto;
+      height: 70px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 1.02rem; font-weight: 700;
+      letter-spacing: -0.02em; text-decoration: none;
+      color: var(--text); display: inline-flex; align-items: center; gap: 0.5ch;
+    }
+    .nav-logo .blink { color: var(--signal); }
+    .nav-links { display: flex; gap: 0.4rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.82rem; color: var(--text-dim);
+      text-decoration: none; padding: 0.45rem 0.8rem; border-radius: 7px;
+      transition: color 0.25s var(--ease), background 0.25s var(--ease);
+    }
+    .nav-links a:hover { color: var(--text); background: var(--panel); }
+    .nav-links a .idx { color: var(--signal); margin-right: 0.55ch; }
+
+    /* ============================================================
+       Hero
+       ============================================================ */
+    .hero { min-height: 100svh; display: flex; align-items: center; padding: 7.5rem 1.5rem 4rem; position: relative; overflow: hidden; }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: radial-gradient(ellipse 75% 70% at 70% 35%, #000 10%, transparent 72%);
+      -webkit-mask-image: radial-gradient(ellipse 75% 70% at 70% 35%, #000 10%, transparent 72%);
+    }
+    .hero::after {
+      content: ''; position: absolute; z-index: 0; pointer-events: none;
+      width: 60vw; height: 60vw; max-width: 620px; max-height: 620px;
+      right: -6%; top: 8%;
+      background: radial-gradient(circle, var(--signal-soft) 0%, transparent 62%);
+      filter: blur(20px);
+    }
+
+    .hero-grid {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(2rem, 5vw, 4.5rem);
+      align-items: center;
+    }
+
+    .hero-lede { max-width: 540px; }
+
+    .status {
+      display: inline-flex; align-items: center; gap: 0.6ch;
+      font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim);
+      border: 1px solid var(--line); border-radius: 100px;
+      padding: 0.35rem 0.85rem; margin-bottom: 1.8rem;
+      animation: rise 0.7s var(--ease) backwards;
+    }
+    .status .dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--ok);
+      box-shadow: 0 0 0 0 rgba(91, 214, 164, 0.5);
+      animation: ping 2.4s ease-out infinite;
+    }
+    @keyframes ping {
+      0%   { box-shadow: 0 0 0 0 rgba(91,214,164,0.45); }
+      70%  { box-shadow: 0 0 0 7px rgba(91,214,164,0); }
+      100% { box-shadow: 0 0 0 0 rgba(91,214,164,0); }
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6.4vw, 4.15rem);
+      font-weight: 600;
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      text-wrap: balance;
+    }
+    .hero-title .line { display: block; animation: rise 0.8s var(--ease) backwards; }
+    .hero-title .line:nth-child(1) { animation-delay: 0.05s; }
+    .hero-title .line:nth-child(2) { animation-delay: 0.13s; }
+    .hero-title .line:nth-child(3) { animation-delay: 0.21s; }
+    .hero-title .c-client { color: var(--client); }
+    .hero-title .c-data { color: var(--signal); }
+
+    .hero-thesis {
+      color: var(--text-dim);
+      font-size: 1.08rem;
+      margin-top: 1.6rem;
+      max-width: 44ch;
+      text-wrap: pretty;
+      animation: rise 0.8s 0.3s var(--ease) backwards;
+    }
+
+    .hero-actions {
+      display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 2.2rem;
+      animation: rise 0.8s 0.38s var(--ease) backwards;
+    }
+
+    .btn {
+      font-family: var(--font-mono); font-size: 0.86rem; font-weight: 500;
+      display: inline-flex; align-items: center; gap: 0.6ch;
+      padding: 0.78rem 1.4rem; border-radius: 9px; text-decoration: none;
+      cursor: pointer; border: 1px solid transparent;
+      transition: transform 0.25s var(--ease), background 0.25s var(--ease), border-color 0.25s var(--ease), color 0.25s var(--ease);
+    }
+    .btn-primary { background: var(--signal); color: #1a0f02; }
+    .btn-primary:hover { background: var(--signal-2); transform: translateY(-2px); }
+    .btn-ghost { background: transparent; color: var(--text); border-color: var(--line-2); }
+    .btn-ghost:hover { border-color: var(--signal-line); color: var(--signal-2); transform: translateY(-2px); }
+    .btn .arrow { transition: transform 0.25s var(--ease); }
+    .btn:hover .arrow { transform: translate(2px, -2px); }
+
+    .hero-meta {
+      display: flex; gap: 1.8rem; flex-wrap: wrap; margin-top: 2.6rem;
+      font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-mute);
+      animation: rise 0.8s 0.46s var(--ease) backwards;
+    }
+    .hero-meta div { display: flex; flex-direction: column; gap: 0.15rem; }
+    .hero-meta b { color: var(--text); font-weight: 500; font-size: 0.92rem; }
+
+    @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ---- Signature: the stack diagram ---- */
+    .stack {
+      position: relative;
+      background: linear-gradient(180deg, var(--ink-2), var(--panel));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.1rem;
+      animation: rise 0.9s 0.25s var(--ease) backwards;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+    .stack-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-mute);
+      padding: 0 0.4rem 0.9rem;
+    }
+    .stack-bar .seg { display: inline-flex; gap: 0.4ch; }
+    .stack-bar .seg i { width: 9px; height: 9px; border-radius: 50%; background: var(--line-2); display: inline-block; }
+    .stack-bar .seg i:first-child { background: #ef6a5e; }
+    .stack-bar .seg i:nth-child(2) { background: #f4bd4f; }
+    .stack-bar .seg i:nth-child(3) { background: var(--ok); }
+
+    .stack-rail { position: relative; }
+    /* the connector line the request travels along */
+    .stack-rail::before {
+      content: ''; position: absolute; left: 24px; top: 22px; bottom: 22px; width: 2px;
+      background: var(--line); border-radius: 2px;
+    }
+    /* the moving request dot */
+    .request {
+      position: absolute; left: 19px; top: 16px; width: 12px; height: 12px; border-radius: 50%;
+      background: var(--client);
+      box-shadow: 0 0 14px 2px var(--client);
+      z-index: 4;
+      animation: travel 4.4s var(--ease) infinite;
+    }
+    @keyframes travel {
+      0%      { transform: translateY(0);    background: var(--client); box-shadow: 0 0 14px 2px var(--client); }
+      40%     { background: var(--client); }
+      60%     { background: var(--signal); box-shadow: 0 0 14px 2px var(--signal); }
+      45%     { transform: translateY(204px); }
+      50%     { transform: translateY(204px); }
+      90%     { transform: translateY(0); }
+      100%    { transform: translateY(0); background: var(--client); box-shadow: 0 0 14px 2px var(--client); }
+    }
+
+    .layer {
+      position: relative; z-index: 2;
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0.85rem 0.95rem; margin: 0.45rem 0;
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+    }
+    .layer .node {
+      width: 11px; height: 11px; border-radius: 50%;
+      border: 2px solid var(--line-2); background: var(--ink); flex: none;
+      margin-left: 8px;
+    }
+    .layer .lname {
+      font-family: var(--font-mono); font-size: 0.82rem; font-weight: 500; color: var(--text);
+      min-width: 4.6em;
+    }
+    .layer .ltech { font-family: var(--font-mono); font-size: 0.74rem; color: var(--text-mute); margin-left: auto; text-align: right; }
+
+    /* each layer pulses as the request passes (synced to travel loop) */
+    .layer.lit { animation: litpulse 4.4s var(--ease) infinite; }
+    .layer:nth-child(2) { animation-delay: 0.0s; }
+    .layer:nth-child(3) { animation-delay: 0.4s; }
+    .layer:nth-child(4) { animation-delay: 0.8s; }
+    .layer:nth-child(5) { animation-delay: 1.2s; }
+    @keyframes litpulse {
+      0%, 8%, 100% { border-color: var(--line); }
+      3%  { border-color: var(--signal-line); }
+    }
+    .layer:first-of-type .node { border-color: var(--client); }
+    .layer:last-of-type .node { border-color: var(--signal); }
+
+    /* ============================================================
+       About
+       ============================================================ */
+    .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+    .about-body p { color: var(--text-dim); font-size: 1.04rem; margin-bottom: 1.1rem; max-width: 56ch; text-wrap: pretty; }
+    .about-body p strong { color: var(--text); font-weight: 600; }
+
+    .spec {
+      border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--ink-2); overflow: hidden;
+      font-family: var(--font-mono); font-size: 0.84rem;
+    }
+    .spec-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.95rem 1.1rem; border-bottom: 1px solid var(--line); }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-row .k { color: var(--text-mute); }
+    .spec-row .v { color: var(--text); text-align: right; }
+    .spec-row .v b { color: var(--signal); font-weight: 700; font-size: 1.15rem; }
+
+    /* ============================================================
+       Stack / Skills — tiers that echo the hero
+       ============================================================ */
+    .skills { background: var(--ink-2); border-block: 1px solid var(--line); }
+    .tiers { display: flex; flex-direction: column; gap: 0.9rem; }
+    .tier {
+      display: grid; grid-template-columns: 88px 1fr; gap: 1.5rem; align-items: center;
+      padding: 1.5rem; border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--panel);
+      transition: border-color 0.3s var(--ease), background 0.3s var(--ease), transform 0.3s var(--ease);
+    }
+    .tier:hover { border-color: var(--signal-line); background: var(--panel-2); transform: translateX(4px); }
+    .tier-id { font-family: var(--font-mono); }
+    .tier-id .ln { font-size: 1.4rem; font-weight: 700; color: var(--signal); letter-spacing: -0.02em; }
+    .tier-id .tag { display: block; font-size: 0.72rem; color: var(--text-mute); margin-top: 0.1rem; }
+    .tier-name { font-family: var(--font-display); font-size: 1.12rem; font-weight: 600; margin-bottom: 0.7rem; }
+    .tier-name span { font-family: var(--font-mono); font-size: 0.74rem; font-weight: 400; color: var(--text-mute); margin-left: 0.6ch; }
+    .chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .chip {
+      font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim);
+      padding: 0.28rem 0.7rem; border: 1px solid var(--line); border-radius: 7px;
+      background: var(--ink-2);
+      transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
+    }
+    .chip:hover { border-color: var(--signal-line); color: var(--signal-2); }
+
+    /* ============================================================
+       Projects
+       ============================================================ */
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
+    .project {
+      display: flex; flex-direction: column;
+      padding: 1.7rem; border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--panel); text-decoration: none; color: inherit;
+      position: relative; overflow: hidden;
+      transition: border-color 0.3s var(--ease), background 0.3s var(--ease), transform 0.3s var(--ease);
+    }
+    .project::after {
+      content: ''; position: absolute; inset: 0 0 auto 0; height: 2px;
+      background: linear-gradient(90deg, var(--client), var(--signal));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--ease);
+    }
+    .project:hover { border-color: var(--line-2); background: var(--panel-2); transform: translateY(-4px); }
+    .project:hover::after { transform: scaleX(1); }
+    .project-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.3rem; }
+    .project-year { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-mute); }
+    .project-state { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ok); display: inline-flex; align-items: center; gap: 0.5ch; }
+    .project-state i { width: 6px; height: 6px; border-radius: 50%; background: var(--ok); }
+    .project h4 { font-family: var(--font-display); font-size: 1.22rem; font-weight: 600; margin-bottom: 0.55rem; letter-spacing: -0.01em; }
+    .project p { color: var(--text-dim); font-size: 0.92rem; flex: 1; margin-bottom: 1.3rem; text-wrap: pretty; }
+    .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem; }
+    .project-tech span { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-mute); }
+    .project-tech span::before { content: '· '; color: var(--line-2); }
+    .project-tech span:first-child::before { content: ''; }
+    .project-go { font-family: var(--font-mono); font-size: 0.82rem; color: var(--signal); display: inline-flex; align-items: center; gap: 0.5ch; }
+    .project .arrow { transition: transform 0.25s var(--ease); }
+    .project:hover .arrow { transform: translate(3px, -3px); }
+
+    /* ============================================================
+       Contact
+       ============================================================ */
+    .contact { background: var(--ink-2); border-top: 1px solid var(--line); }
+    .contact-card {
+      border: 1px solid var(--line); border-radius: var(--radius);
+      background: linear-gradient(180deg, var(--panel), var(--ink-2));
+      padding: clamp(2rem, 5vw, 3.5rem); text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .contact-card::before {
+      content: ''; position: absolute; left: 50%; top: -40%; width: 80%; height: 80%;
+      transform: translateX(-50%);
+      background: radial-gradient(ellipse at center, var(--signal-soft), transparent 65%);
+      pointer-events: none;
+    }
+    .contact-card .inner { position: relative; }
+    .contact-card h2 { font-family: var(--font-display); font-size: clamp(1.7rem, 4vw, 2.5rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; }
+    .contact-card p { color: var(--text-dim); margin: 1rem auto 2rem; max-width: 46ch; text-wrap: pretty; }
+    .contact-mail {
+      font-family: var(--font-mono); font-size: clamp(1rem, 3vw, 1.45rem); color: var(--signal);
+      text-decoration: none; display: inline-block; margin-bottom: 2rem;
+      border-bottom: 1px solid var(--signal-line); padding-bottom: 0.2rem;
+      transition: color 0.25s var(--ease);
+    }
+    .contact-mail:hover { color: var(--signal-2); }
+    .socials { display: flex; justify-content: center; gap: 0.7rem; flex-wrap: wrap; }
+    .social {
+      font-family: var(--font-mono); font-size: 0.84rem; color: var(--text-dim);
+      text-decoration: none; padding: 0.6rem 1.1rem;
+      border: 1px solid var(--line); border-radius: 9px; background: var(--ink-2);
+      transition: border-color 0.25s var(--ease), color 0.25s var(--ease), transform 0.25s var(--ease);
+    }
+    .social:hover { border-color: var(--signal-line); color: var(--text); transform: translateY(-2px); }
+
+    /* ============================================================
+       Footer
+       ============================================================ */
+    .footer {
+      padding: 2.2rem 1.5rem; border-top: 1px solid var(--line);
+      font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-mute);
+    }
+    .footer-inner { max-width: var(--maxw); margin: 0 auto; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .footer a { color: var(--text-dim); text-decoration: none; }
+    .footer a:hover { color: var(--signal); }
+
+    /* ============================================================
+       Scroll reveal
+       ============================================================ */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ============================================================
+       Responsive
+       ============================================================ */
+    @media (max-width: 880px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .stack { max-width: 460px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero { padding: 6.5rem 1.25rem 3.5rem; }
+      .tier { grid-template-columns: 1fr; gap: 1rem; }
+      .tier-id { display: flex; align-items: baseline; gap: 0.7ch; }
+      .tier-id .tag { margin-top: 0; }
+      .hero-meta { gap: 1.2rem 1.6rem; }
+      .layer .ltech { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">跳到主要内容</a>
+
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" translate="no">qlAD<span class="blink">_</span></a>
+      <ul class="nav-links">
+        <li><a href="#about"><span class="idx">//</span>关于</a></li>
+        <li><a href="#stack"><span class="idx">//</span>技术栈</a></li>
+        <li><a href="#work"><span class="idx">//</span>项目</a></li>
+        <li><a href="#contact"><span class="idx">//</span>联系</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-grid container">
+        <div class="hero-lede">
+          <span class="status"><span class="dot"></span>OPEN TO WORK · 开放合作机会</span>
+          <h1 class="hero-title">
+            <span class="line">把一次请求，</span>
+            <span class="line">从<span class="c-client">浏览器</span></span>
+            <span class="line">带到<span class="c-data">数据库</span>。</span>
+          </h1>
+          <p class="hero-thesis">
+            我是 qlAD，一名全栈开发工程师。我负责整条交付链路——表现层、应用层、数据层、基础设施，让请求一路畅通，没有需要交接的缝隙。
+          </p>
+          <div class="hero-actions">
+            <a href="#work" class="btn btn-primary">查看项目 <span class="arrow">↗</span></a>
+            <a href="#contact" class="btn btn-ghost">联系我</a>
+          </div>
+          <div class="hero-meta">
+            <div><span>经验</span><b>5+ 年</b></div>
+            <div><span>交付项目</span><b>30+</b></div>
+            <div><span>常驻</span><b>Remote / 远程</b></div>
+          </div>
+        </div>
+
+        <!-- Signature: a request travels down the stack -->
+        <div class="stack" aria-hidden="true">
+          <div class="stack-bar">
+            <span class="seg"><i></i><i></i><i></i></span>
+            <span>request → response</span>
+          </div>
+          <div class="stack-rail">
+            <span class="request"></span>
+            <div class="layer lit"><span class="node"></span><span class="lname">浏览器</span><span class="ltech">React · TypeScript</span></div>
+            <div class="layer lit"><span class="node"></span><span class="lname">边缘</span><span class="ltech">Next.js · CDN</span></div>
+            <div class="layer lit"><span class="node"></span><span class="lname">服务</span><span class="ltech">Go · Node.js</span></div>
+            <div class="layer lit"><span class="node"></span><span class="lname">数据</span><span class="ltech">PostgreSQL · Redis</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow"><b>//</b> 关于</span>
+          <h2 class="section-title">写能正常工作的代码是底线，<br>写得清楚、能被改动，才是目标。</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-body reveal">
+            <p>
+              我专注于构建<strong>高质量的 Web 应用</strong>，能力覆盖从前端界面到后端基础设施的完整链路。我擅长把含糊的需求拆解成简洁、可维护的技术方案，并对结果负责到底。
+            </p>
+            <p>
+              我相信好系统的标志不是它今天能跑，而是半年后别人接手时还敢动它。所以我在意边界清晰、命名诚实、和那些不会在凌晨三点报警的取舍。
+            </p>
+            <p>
+              工作之外，我持续追新——新的框架、语言特性、架构模式。保持好奇是我维持手感的方式。
+            </p>
+          </div>
+          <div class="spec reveal" translate="no">
+            <div class="spec-row"><span class="k">// 经验</span><span class="v"><b>5+</b> 年</span></div>
+            <div class="spec-row"><span class="k">// 项目</span><span class="v"><b>30+</b> 已交付</span></div>
+            <div class="spec-row"><span class="k">// 技术栈</span><span class="v"><b>15+</b> 工具链</span></div>
+            <div class="spec-row"><span class="k">// 定位</span><span class="v">全栈 · 端到端</span></div>
+            <div class="spec-row"><span class="k">// 状态</span><span class="v" style="color:var(--ok)">● 接受新机会</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stack / Skills -->
+    <section class="section skills" id="stack">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow"><b>//</b> 技术栈</span>
+          <h2 class="section-title">同一个栈，从上到下。</h2>
+          <p class="section-sub">这正是“全栈”的含义——按系统的层级组织，而不是一堆零散的技能点。</p>
+        </div>
+        <div class="tiers">
+          <div class="tier reveal">
+            <div class="tier-id"><span class="ln">L4</span><span class="tag">PRESENTATION</span></div>
+            <div>
+              <div class="tier-name">表现层 <span>用户看见与触碰的一切</span></div>
+              <div class="chips">
+                <span class="chip">React</span><span class="chip">Vue.js</span><span class="chip">TypeScript</span><span class="chip">Next.js</span><span class="chip">Nuxt</span><span class="chip">Tailwind CSS</span>
+              </div>
+            </div>
+          </div>
+          <div class="tier reveal">
+            <div class="tier-id"><span class="ln">L3</span><span class="tag">APPLICATION</span></div>
+            <div>
+              <div class="tier-name">应用层 <span>业务逻辑与接口</span></div>
+              <div class="chips">
+                <span class="chip">Node.js</span><span class="chip">Go</span><span class="chip">Python</span><span class="chip">Rust</span><span class="chip">GraphQL</span><span class="chip">REST API</span>
+              </div>
+            </div>
+          </div>
+          <div class="tier reveal">
+            <div class="tier-id"><span class="ln">L2</span><span class="tag">DATA</span></div>
+            <div>
+              <div class="tier-name">数据层 <span>存储、缓存与一致性</span></div>
+              <div class="chips">
+                <span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">Redis</span><span class="chip">SQL</span>
+              </div>
+            </div>
+          </div>
+          <div class="tier reveal">
+            <div class="tier-id"><span class="ln">L1</span><span class="tag">INFRA</span></div>
+            <div>
+              <div class="tier-name">基础设施 <span>部署、运维与交付流水线</span></div>
+              <div class="chips">
+                <span class="chip">Docker</span><span class="chip">AWS</span><span class="chip">CI/CD</span><span class="chip">Linux</span><span class="chip">Microservices</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work -->
+    <section class="section" id="work">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow"><b>//</b> 项目</span>
+          <h2 class="section-title">精选项目</h2>
+          <p class="section-sub">每个项目都覆盖了从界面到部署的完整链路。</p>
+        </div>
+        <div class="projects-grid">
+          <a href="#" class="project reveal">
+            <div class="project-top">
+              <span class="project-year">2025</span>
+              <span class="project-state"><i></i> 生产环境</span>
+            </div>
+            <h4>CloudDash 管理平台</h4>
+            <p>企业级 SaaS 后台，支持多租户、RBAC 权限模型与实时数据看板。从前端表格虚拟化到后端查询优化，全部由我端到端负责。</p>
+            <div class="project-tech"><span>React</span><span>TypeScript</span><span>Node.js</span><span>PostgreSQL</span></div>
+            <span class="project-go">了解更多 <span class="arrow">↗</span></span>
+          </a>
+          <a href="#" class="project reveal">
+            <div class="project-top">
+              <span class="project-year">2024</span>
+              <span class="project-state"><i></i> 生产环境</span>
+            </div>
+            <h4>DataViz 可视化引擎</h4>
+            <p>高性能实时图表库，用 WebGL 渲染百万级数据点仍保持 60fps，支持交互式探索与可定制主题。</p>
+            <div class="project-tech"><span>Vue.js</span><span>D3.js</span><span>WebGL</span><span>Python</span></div>
+            <span class="project-go">了解更多 <span class="arrow">↗</span></span>
+          </a>
+          <a href="#" class="project reveal">
+            <div class="project-top">
+              <span class="project-year">2024</span>
+              <span class="project-state"><i></i> 生产环境</span>
+            </div>
+            <h4>ShopFlow 电商系统</h4>
+            <p>全栈电商解决方案——商品、购物车、支付集成与推荐引擎。用 Go 服务承接高并发下单，Redis 兜住峰值流量。</p>
+            <div class="project-tech"><span>Next.js</span><span>Go</span><span>Redis</span><span>Docker</span></div>
+            <span class="project-go">了解更多 <span class="arrow">↗</span></span>
+          </a>
+          <a href="#" class="project reveal">
+            <div class="project-top">
+              <span class="project-year">2023</span>
+              <span class="project-state"><i></i> 生产环境</span>
+            </div>
+            <h4>AI Chat 智能助手</h4>
+            <p>基于 LLM 的对话平台，支持多模型切换、流式响应与自定义知识库。WebSocket 长连接保证逐字输出的顺滑体验。</p>
+            <div class="project-tech"><span>TypeScript</span><span>Python</span><span>WebSocket</span><span>MongoDB</span></div>
+            <span class="project-go">了解更多 <span class="arrow">↗</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="contact-card reveal">
+          <div class="inner">
+            <span class="eyebrow"><b>//</b> 联系</span>
+            <h2>有想法要落地？<br>把第一个请求发过来。</h2>
+            <p>无论是合作、招聘，还是只想聊聊技术，我都乐意回复。</p>
+            <a href="mailto:hi@qlad.dev" class="contact-mail" translate="no">hi@qlad.dev</a>
+            <div class="socials">
+              <a href="https://github.com/qlad" class="social" target="_blank" rel="noopener" translate="no">GitHub ↗</a>
+              <a href="#" class="social" translate="no">LinkedIn ↗</a>
+              <a href="#" class="social" translate="no">Twitter ↗</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>© 2026 <span translate="no">qlAD</span> · 全栈开发工程师</span>
+      <span translate="no">built from scratch — browser to database</span>
+    </div>
+  </footer>
+
+  <script>
+    // Nav background on scroll
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>
